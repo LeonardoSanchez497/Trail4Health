@@ -18,4 +18,35 @@
     <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="1.0.1" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Include="wwwroot\css\1-col-portfolio.css" />
+    <None Include="wwwroot\css\bootstrap.css" />
+    <None Include="wwwroot\css\bootstrap.min.css" />
+    <None Include="wwwroot\css\jquery.smartmenus.bootstrap.css" />
+    <None Include="wwwroot\css\owl\owl.carousel.css" />
+    <None Include="wwwroot\css\owl\owl.carousel.js" />
+    <None Include="wwwroot\css\owl\owl.theme.css" />
+    <None Include="wwwroot\css\owl\owl.transitions.css" />
+    <None Include="wwwroot\fonts\font-awesome.min.css" />
+    <None Include="wwwroot\fonts\fontawesome-webfont.eot" />
+    <None Include="wwwroot\fonts\fontawesome-webfont.svg" />
+    <None Include="wwwroot\fonts\fontawesome-webfont.ttf" />
+    <None Include="wwwroot\fonts\fontawesome-webfont.woff" />
+    <None Include="wwwroot\fonts\fontawesome-webfont.woff2" />
+    <None Include="wwwroot\fonts\FontAwesome.otf" />
+    <None Include="wwwroot\fonts\glyphicons-halflings-regular.eot" />
+    <None Include="wwwroot\fonts\glyphicons-halflings-regular.svg" />
+    <None Include="wwwroot\fonts\glyphicons-halflings-regular.ttf" />
+    <None Include="wwwroot\fonts\glyphicons-halflings-regular.woff" />
+    <None Include="wwwroot\fonts\glyphicons-halflings-regular.woff2" />
+    <None Include="wwwroot\js\bootstrap.js" />
+    <None Include="wwwroot\js\bootstrap.min.js" />
+    <None Include="wwwroot\js\contact.js" />
+    <None Include="wwwroot\js\jquery.js" />
+    <None Include="wwwroot\js\jquery.smartmenus.bootstrap.js" />
+    <None Include="wwwroot\js\jquery.smartmenus.js" />
+    <None Include="wwwroot\js\tutorial.js" />
+    <None Include="wwwroot\js\wow.min.js" />
+  </ItemGroup>
+
 </Project>
