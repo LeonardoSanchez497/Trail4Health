@@ -15,7 +15,7 @@ namespace Trail4Health.Controllers
 
         public IActionResult About()
         {
-            ViewData["Message"] = "Your application description page.";
+            ViewData["Message"] = "Trabalho de Grupo";
 
             return View();
         }
