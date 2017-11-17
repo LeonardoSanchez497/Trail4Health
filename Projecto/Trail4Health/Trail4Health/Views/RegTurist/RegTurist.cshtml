@@ -1,0 +1,58 @@
+﻿@model Trail4Health.Models.RegTurista
+    
+
+@{
+    ViewData["Title"] = "Registar Turista";
+}
+<!--Body-->
+<form asp-action="RegTurist" method="post">
+    <table>
+        <tr>
+            <td>
+                <label asp-for="Name">Nome do Turista</label>
+            </td>
+            <td>
+                <label asp-for="Name"/> 
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label asp-for="Birthday">Data de Nascimento</label>
+            </td>
+            <td>
+                <label asp-for="Birthday" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label asp-for="Email">Endereço de Correio eletronico - Email</label>
+            </td>
+            <td>
+                <label asp-for="Email" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label asp-for="Phonenumeber">Contacto do Turista</label>
+            </td>
+            <td>
+                <label asp-for="Phonenumeber" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label asp-for="EPhonenumber">Contacto Telefonico a utilizar em caso de emergencia</label>
+            </td>
+            <td>
+                <label asp-for="EPhonenumber" />
+            </td>
+        </tr>
+
+    </table>
+
+
+
+
+
+
+</form>
