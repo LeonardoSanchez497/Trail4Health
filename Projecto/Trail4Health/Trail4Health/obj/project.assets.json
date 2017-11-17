@@ -10748,7 +10748,7 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Micael Capelão\\.nuget\\packages\\": {}
+    "C:\\Users\\Leonardo Sanchez\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
@@ -10756,14 +10756,14 @@
       "hideWarningsAndErrors": true
     },
     "restore": {
-      "projectUniqueName": "C:\\Users\\Micael Capelão\\Documents\\GitHub\\Trail4Health\\Projecto\\Trail4Health\\Trail4Health\\Trail4Health.csproj",
+      "projectUniqueName": "d:\\Users\\Leonardo Sanchez\\Documents\\GitHub\\Trail4Health\\Projecto\\Trail4Health\\Trail4Health\\Trail4Health.csproj",
       "projectName": "Trail4Health",
-      "projectPath": "C:\\Users\\Micael Capelão\\Documents\\GitHub\\Trail4Health\\Projecto\\Trail4Health\\Trail4Health\\Trail4Health.csproj",
-      "packagesPath": "C:\\Users\\Micael Capelão\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Micael Capelão\\Documents\\GitHub\\Trail4Health\\Projecto\\Trail4Health\\Trail4Health\\obj\\",
+      "projectPath": "d:\\Users\\Leonardo Sanchez\\Documents\\GitHub\\Trail4Health\\Projecto\\Trail4Health\\Trail4Health\\Trail4Health.csproj",
+      "packagesPath": "C:\\Users\\Leonardo Sanchez\\.nuget\\packages\\",
+      "outputPath": "d:\\Users\\Leonardo Sanchez\\Documents\\GitHub\\Trail4Health\\Projecto\\Trail4Health\\Trail4Health\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Micael Capelão\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Leonardo Sanchez\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
