@@ -8,3 +8,13 @@ d:\Users\Leonardo Sanchez\Documents\GitHub\Trail4Health\Projecto\Trail4Health\Tr
 d:\Users\Leonardo Sanchez\Documents\GitHub\Trail4Health\Projecto\Trail4Health\Trail4Health\obj\Debug\netcoreapp1.1\Trail4Health.AssemblyInfo.cs
 d:\Users\Leonardo Sanchez\Documents\GitHub\Trail4Health\Projecto\Trail4Health\Trail4Health\obj\Debug\netcoreapp1.1\Trail4Health.dll
 d:\Users\Leonardo Sanchez\Documents\GitHub\Trail4Health\Projecto\Trail4Health\Trail4Health\obj\Debug\netcoreapp1.1\Trail4Health.pdb
+C:\Users\Micael Capelão\Documents\GitHub\Trail4Health\Projecto\Trail4Health\Trail4Health\bin\Debug\netcoreapp1.1\Trail4Health.deps.json
+C:\Users\Micael Capelão\Documents\GitHub\Trail4Health\Projecto\Trail4Health\Trail4Health\bin\Debug\netcoreapp1.1\Trail4Health.runtimeconfig.json
+C:\Users\Micael Capelão\Documents\GitHub\Trail4Health\Projecto\Trail4Health\Trail4Health\bin\Debug\netcoreapp1.1\Trail4Health.runtimeconfig.dev.json
+C:\Users\Micael Capelão\Documents\GitHub\Trail4Health\Projecto\Trail4Health\Trail4Health\bin\Debug\netcoreapp1.1\Trail4Health.dll
+C:\Users\Micael Capelão\Documents\GitHub\Trail4Health\Projecto\Trail4Health\Trail4Health\bin\Debug\netcoreapp1.1\Trail4Health.pdb
+C:\Users\Micael Capelão\Documents\GitHub\Trail4Health\Projecto\Trail4Health\Trail4Health\obj\Debug\netcoreapp1.1\Trail4Health.csprojResolveAssemblyReference.cache
+C:\Users\Micael Capelão\Documents\GitHub\Trail4Health\Projecto\Trail4Health\Trail4Health\obj\Debug\netcoreapp1.1\Trail4Health.csproj.CoreCompileInputs.cache
+C:\Users\Micael Capelão\Documents\GitHub\Trail4Health\Projecto\Trail4Health\Trail4Health\obj\Debug\netcoreapp1.1\Trail4Health.AssemblyInfo.cs
+C:\Users\Micael Capelão\Documents\GitHub\Trail4Health\Projecto\Trail4Health\Trail4Health\obj\Debug\netcoreapp1.1\Trail4Health.dll
+C:\Users\Micael Capelão\Documents\GitHub\Trail4Health\Projecto\Trail4Health\Trail4Health\obj\Debug\netcoreapp1.1\Trail4Health.pdb
