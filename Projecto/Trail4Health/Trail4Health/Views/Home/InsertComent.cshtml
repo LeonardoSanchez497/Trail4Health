@@ -1,0 +1,50 @@
+﻿@model Trail4Health.Models.Comment
+   
+@{
+    ViewData["Title"] = "Inset Comment";
+}
+
+<form asp-action="InsertComent method="post">
+    <div class="panel panel-default" stryle="margin-top:2ex;">
+        <div class="panel-heading">
+            <h3 class="panel-title">Comentar Trilho </h3>
+        </div>
+        <div class="panel-body">
+            <div class="form-group">
+                <label asp-for="nome">Name</label>
+                <input asp-for="nome" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="nometrilho">Trail Name</label>
+                <input asp-for="nometrilho" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="completou">You finish your trail?</label>
+                <select asp-for="completou" class="form-control">
+                    <option value="Choose and option"></option>
+                    <option value="true">Yes, i finish</option>
+                    <option value="false">Sry, i weak</option>"
+                </select>
+            </div>
+            <div class="form-group">
+                <label asp-for="tempo">Time spend</label>
+                <input asp-for="tempo" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="motivo">Why you quit from trail</label>
+                <input asp-for="motivo" class="form-control"/>
+            </div>
+            <div class="form-group">
+                <label asp-for="comentario">Insert your Comment</label>
+                <input asp-for="comentario" class="form-control"/>
+            </div>
+        </div>
+        <div class="panel-footer">
+            <button type="submit" class="btn btn-primary">Save Comment</button>
+        </div>
+    </div>
+    
+
+
+
+</form>
