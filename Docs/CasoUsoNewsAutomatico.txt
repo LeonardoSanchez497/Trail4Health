@@ -1,0 +1,31 @@
+
+Nome:
+	 -Enviar newsletter automático
+
+Descrição:
+	
+	 -O objectivo é enviar newsletter automaticamente aos utilizadores
+
+Pré-Condições:	
+	 -O sistema estar funcional
+
+Caminho Principal:
+
+	 1-O desenvolvedor insere/modifica algo no sistema;
+	 2-O sistema atualiza a informação recebida;
+	 3-O desenvolvedor acede à informação (mail) de cada utilizador e adiciona a informação que
+pretende enviar aos utilizadores;
+	 4-O sistema reencaminha a informação relativa à mudança efectuada para todos os utilizadores;
+
+
+Caminhos alternativos:
+
+	2.a)O sistema informa o desenvolvedor que nao foi possivel guardar informação;
+	4.a)O sistema avisa o desenvolvedor se nao for possivel reencaminhar os mails para todos os utilizadores;
+
+Suplementos ou adornos:
+
+	Testar se o sistema envia correctamente um mail para qualquer utilizador.
+		
+Pós-Condições:
+	 Se toda a informar for enviado correctamente para todos os utilizadores;
