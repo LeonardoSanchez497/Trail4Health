@@ -18,3 +18,4 @@ C:\Users\Micael Capelão\Documents\GitHub\Trail4Health\Projecto\Trail4Health\Tra
 C:\Users\Micael Capelão\Documents\GitHub\Trail4Health\Projecto\Trail4Health\Trail4Health\obj\Debug\netcoreapp1.1\Trail4Health.AssemblyInfo.cs
 C:\Users\Micael Capelão\Documents\GitHub\Trail4Health\Projecto\Trail4Health\Trail4Health\obj\Debug\netcoreapp1.1\Trail4Health.dll
 C:\Users\Micael Capelão\Documents\GitHub\Trail4Health\Projecto\Trail4Health\Trail4Health\obj\Debug\netcoreapp1.1\Trail4Health.pdb
+d:\Users\Leonardo Sanchez\Documents\GitHub\Trail4Health\Projecto\Trail4Health\Trail4Health\obj\Debug\netcoreapp1.1\Trail4Health.AssemblyInfoInputs.cache
