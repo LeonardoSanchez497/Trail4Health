@@ -1,0 +1,80 @@
+﻿@model IEnumerable<Trail4Healthtest.Models.Turista>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<div class="bread_area">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <ol class="breadcrumb">
+                    <li><a href="/">Trail4Health</a></li>
+                    <li class="active">Consultar turistas</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <section class="page col-sm-12">
+            <h2 class="page-title">Consultar turistas</h2>
+            <div class="row">
+                <div class="col-lg-12">
+                    <p>
+                        <button class="btn btn-default"><a asp-action="Create">Novo turista</a></button>
+                    </p>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>
+                                   Nome
+                                </th>
+                                <th>
+                                   Número de Telefone
+                                </th>
+                                <th>
+                                    NIF
+                                </th>
+                                <th>
+                                   Email
+                                </th>
+                                <th>
+                                    Contato de Emergência
+                                </th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.nome)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.numeroTelefone)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.nif)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.email)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.contato_emergencia)
+                                    </td>
+                                    <td>
+                                        <a asp-action="Edit" asp-route-id="@item.turistaId">Editar</a> |
+                                        <a asp-action="Details" asp-route-id="@item.turistaId">Ver mais detalhes</a> |
+                                        <a asp-action="Delete" asp-route-id="@item.turistaId">Apagar</a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>

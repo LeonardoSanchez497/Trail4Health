@@ -1,0 +1,84 @@
+﻿@model Trail4Healthtest.Models.Trilho
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<div class="bread_area">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <ol class="breadcrumb">
+                    <li><a href="/">Trail4Health</a></li>
+                    <li class="active">Editar Trilho</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <section class="page col-sm-12">
+            <h2 class="page-title">Editar trilho</h2>
+            <div class="row">
+                <div class="col-lg-10">
+                    <form asp-action="Edit">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <input type="hidden" asp-for="trilhoId" />
+                        <div class="form-group">
+                            <label asp-for="distancia_a_percorrer" class="control-label"></label>
+                            <input asp-for="distancia_a_percorrer" class="form-control" />
+                            <span asp-validation-for="distancia_a_percorrer" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="duracao_media" class="control-label"></label>
+                            <input asp-for="duracao_media" class="form-control" />
+                            <span asp-validation-for="duracao_media" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="loc_inicio" class="control-label"></label>
+                            <input asp-for="loc_inicio" class="form-control" />
+                            <span asp-validation-for="loc_inicio" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="loc_fim" class="control-label"></label>
+                            <input asp-for="loc_fim" class="form-control" />
+                            <span asp-validation-for="loc_fim" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="cod_dificuldade" class="control-label"></label>
+                            <input asp-for="cod_dificuldade" class="form-control" />
+                            <span asp-validation-for="cod_dificuldade" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="cod_desnivel" class="control-label"></label>
+                            <input asp-for="cod_desnivel" class="form-control" />
+                            <span asp-validation-for="cod_desnivel" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="cod_etapa_aconselhada" class="control-label"></label>
+                            <input asp-for="cod_etapa_aconselhada" class="form-control" />
+                            <span asp-validation-for="cod_etapa_aconselhada" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="ativo" class="control-label"></label>
+                            <input asp-for="ativo" class="form-control" />
+                            <span asp-validation-for="ativo" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" value="Save" class="btn btn-default" />
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div>
+                <a asp-action="Index">Back to List</a>
+            </div>
+
+            @section Scripts {
+                @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+            }
+        </section>
+    </div>
+</div>

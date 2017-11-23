@@ -1,0 +1,52 @@
+﻿@model Trail4Healthtest.Models.Comentarios
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Comentarios</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+           Id do trilho
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.trilhoId)
+        </dd>
+        <dt>
+            Duração do trilho
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.duracaoTrilho)
+        </dd>
+        <dt>
+            Avalição do trilho
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.avaliacao)
+        </dd>
+        <dt>
+           Comentar
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.comentar)
+        </dd>
+        <dt>
+           Turista
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.turista.turistaId)
+        </dd>
+    </dl>
+</div>
+<div>
+    <button class="btn btn-info">
+        <a asp-action="Edit" asp-route-id="@Model.trilhoId">Editar</a>
+    </button> |
+    <button class="btn btn-default">
+        <a asp-action="Index">Volta à Lista</a>
+    </button>
+</div>

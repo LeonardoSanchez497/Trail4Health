@@ -1,0 +1,66 @@
+﻿@model Trail4Healthtest.Models.Turista
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<div class="bread_area">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <ol class="breadcrumb">
+                    <li><a href="/">Trail4Health</a></li>
+                    <li class="active">Editar turista</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <section class="page col-sm-12">
+            <h2 class="page-title">Editar turista</h2>
+            <div class="row">
+                <div class="col-lg-10">
+                    <form asp-action="Edit">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <input type="hidden" asp-for="turistaId" />
+                        <div class="form-group">
+                            <label asp-for="nome" class="control-label">Nome</label>
+                            <input asp-for="nome" class="form-control" />
+                            <span asp-validation-for="nome" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="numeroTelefone" class="control-label">Número de Telefone</label>
+                            <input asp-for="numeroTelefone" class="form-control" />
+                            <span asp-validation-for="numeroTelefone" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="nif" class="control-label">NIF</label>
+                            <input asp-for="nif" class="form-control" />
+                            <span asp-validation-for="nif" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="email" class="control-label">Email</label>
+                            <input asp-for="email" class="form-control" />
+                            <span asp-validation-for="email" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="contato_emergencia" class="control-label">Contato de Emergência</label>
+                            <input asp-for="contato_emergencia" class="form-control" />
+                            <span asp-validation-for="contato_emergencia" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" value="Atualizar" class="btn btn-success" /> | <button class="btn btn-default"><a asp-action="Index">Voltar à lista</a></button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            @section Scripts {
+                @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+            }
+        </section>
+    </div>
+</div>
+

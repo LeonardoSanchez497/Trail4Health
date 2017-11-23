@@ -1,0 +1,81 @@
+﻿@model Trail4Healthtest.Models.Trilho
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<div class="bread_area">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <ol class="breadcrumb">
+                    <li><a href="/">Trail4Health</a></li>
+                    <li class="active">Detalhes do trilho</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <section class="page col-sm-12">
+            <h2 class="page-title">Detalhes trilho</h2>
+            <div class="row">
+                <div class="col-lg-10">
+                    <dl class="dl-horizontal">
+                        <dt>
+                            Distância a percorrer
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.distancia_a_percorrer)
+                        </dd>
+                        <dt>
+                            Duração média
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.duracao_media)
+                        </dd>
+                        <dt>
+                           Local de início
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.loc_inicio)
+                        </dd>
+                        <dt>
+                            Local de fim
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.loc_fim)
+                        </dd>
+                        <dt>
+                           Nível de dificuldade
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.cod_dificuldade)
+                        </dd>
+                        <dt>
+                            Desnível
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.cod_desnivel)
+                        </dd>
+                        <dt>
+                            Etapa aconselhada
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.cod_etapa_aconselhada)
+                        </dd>
+                        <dt>
+                            Ativo
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.ativo)
+                        </dd>
+                    </dl>
+                </div>
+                <div>
+                    <button class="btn btn-info">
+                        <a asp-action="Edit" asp-route-id="@Model.trilhoId">Editar</a></button> |
+                    <button class="btn btn-default">
+                        <a asp-action="Index">Volta à Lista</a></button>
+</div>

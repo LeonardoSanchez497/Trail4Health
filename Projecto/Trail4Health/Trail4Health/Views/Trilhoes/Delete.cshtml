@@ -1,0 +1,88 @@
+﻿@model Trail4Healthtest.Models.Trilho
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<div class="bread_area">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <ol class="breadcrumb">
+                    <li><a href="/">Trail4Health</a></li>
+                    <li class="active">Apagar Trilho</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <section class="page col-sm-12">
+            <h2 class="page-title">Apagar trilho</h2>
+            <div class="row">
+                <div class="col-lg-10">
+                    <dl class="dl-horizontal">
+                        <dt>
+                            @Html.DisplayNameFor(model => model.distancia_a_percorrer)
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.distancia_a_percorrer)
+                        </dd>
+                        <dt>
+                            @Html.DisplayNameFor(model => model.duracao_media)
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.duracao_media)
+                        </dd>
+                        <dt>
+                            @Html.DisplayNameFor(model => model.loc_inicio)
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.loc_inicio)
+                        </dd>
+                        <dt>
+                            @Html.DisplayNameFor(model => model.loc_fim)
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.loc_fim)
+                        </dd>
+                        <dt>
+                            @Html.DisplayNameFor(model => model.cod_dificuldade)
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.cod_dificuldade)
+                        </dd>
+                        <dt>
+                            @Html.DisplayNameFor(model => model.cod_desnivel)
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.cod_desnivel)
+                        </dd>
+                        <dt>
+                            @Html.DisplayNameFor(model => model.cod_etapa_aconselhada)
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.cod_etapa_aconselhada)
+                        </dd>
+                        <dt>
+                            @Html.DisplayNameFor(model => model.ativo)
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.ativo)
+                        </dd>
+                    </dl>
+
+                    <form asp-action="Delete">
+                        <input type="hidden" asp-for="trilhoId" />
+                        <input type="submit" value="Delete" class="btn btn-default" /> |
+                        <button class="btn btn-default">
+                            <a asp-action="Index">Volta à Lista</a>
+                        </button>
+                    </form>
+                </div>
+
+            </div>
+        </section>
+    </div>
+</div>

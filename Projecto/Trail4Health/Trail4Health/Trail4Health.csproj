@@ -1,66 +1,18 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp1.1</TargetFramework>
-    <PackageTargetFallback>$(PackageTargetFallback);portable-net45+win8+wp8+wpa81;</PackageTargetFallback>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.0.0" />
-    <PackageReference Include="Microsoft.AspNetCore" Version="1.1.2" />
-    <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="1.1.3" />
-    <PackageReference Include="Microsoft.AspNetCore.StaticFiles" Version="1.1.2" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="1.1.2" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="1.1.2" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer.Design" Version="1.1.2" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="1.1.1" />
-    <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="1.1.2" />
-    <PackageReference Include="Microsoft.VisualStudio.Web.BrowserLink" Version="1.1.2" />
-    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="1.1.1" />
+    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.3" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.0.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="2.0.1" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.0.1" />
   </ItemGroup>
 
   <ItemGroup>
-    <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="1.0.1" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Include="wwwroot\css\1-col-portfolio.css" />
-    <None Include="wwwroot\css\bootstrap.css" />
-    <None Include="wwwroot\css\bootstrap.min.css" />
-    <None Include="wwwroot\css\jquery.smartmenus.bootstrap.css" />
-    <None Include="wwwroot\css\owl\owl.carousel.css" />
-    <None Include="wwwroot\css\owl\owl.carousel.js" />
-    <None Include="wwwroot\css\owl\owl.theme.css" />
-    <None Include="wwwroot\css\owl\owl.transitions.css" />
-    <None Include="wwwroot\fonts\font-awesome.min.css" />
-    <None Include="wwwroot\fonts\fontawesome-webfont.eot" />
-    <None Include="wwwroot\fonts\fontawesome-webfont.svg" />
-    <None Include="wwwroot\fonts\fontawesome-webfont.ttf" />
-    <None Include="wwwroot\fonts\fontawesome-webfont.woff" />
-    <None Include="wwwroot\fonts\fontawesome-webfont.woff2" />
-    <None Include="wwwroot\fonts\FontAwesome.otf" />
-    <None Include="wwwroot\fonts\glyphicons-halflings-regular.eot" />
-    <None Include="wwwroot\fonts\glyphicons-halflings-regular.svg" />
-    <None Include="wwwroot\fonts\glyphicons-halflings-regular.ttf" />
-    <None Include="wwwroot\fonts\glyphicons-halflings-regular.woff" />
-    <None Include="wwwroot\fonts\glyphicons-halflings-regular.woff2" />
-    <None Include="wwwroot\js\bootstrap.js" />
-    <None Include="wwwroot\js\bootstrap.min.js" />
-    <None Include="wwwroot\js\contact.js" />
-    <None Include="wwwroot\js\jquery.js" />
-    <None Include="wwwroot\js\jquery.smartmenus.bootstrap.js" />
-    <None Include="wwwroot\js\jquery.smartmenus.js" />
-    <None Include="wwwroot\js\tutorial.js" />
-    <None Include="wwwroot\js\wow.min.js" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Controllers\" />
-    <Folder Include="Data\" />
-    <Folder Include="Views\Shared\" />
-    <Folder Include="wwwroot\css\" />
-    <Folder Include="wwwroot\images\" />
-    <Folder Include="wwwroot\js\" />
+    <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.1" />
   </ItemGroup>
 
 </Project>

@@ -1,0 +1,53 @@
+﻿@model Trail4Healthtest.Models.Newsletter
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<div class="bread_area">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <ol class="breadcrumb">
+                    <li><a href="/">Trail4Health</a></li>
+                    <li class="active">Apagar newsletter</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <section class="page col-sm-12">
+            <h2 class="page-title">Apagar newsletter</h2>
+            <div class="row">
+                <div class="col-lg-10">
+                    <dl class="dl-horizontal">
+                        <dt>
+                            Data
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.data)
+                        </dd>
+                        <dt>
+                           Descrição
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.descricao)
+                        </dd>
+                        <dt>
+                            Foto
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.foto)
+                        </dd>
+                    </dl>
+
+                    <form asp-action="Delete">
+                        <input type="hidden" asp-for="newletterId" />
+                        <input type="submit" value="Delete" class="btn btn-default" /> |
+                        <button class="btn btn-default">
+                            <a asp-action="Index">Volta à Lista</a>
+                        </button>
+                    </form>
+                </div>

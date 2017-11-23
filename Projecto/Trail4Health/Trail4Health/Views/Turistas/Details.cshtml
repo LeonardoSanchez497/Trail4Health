@@ -1,0 +1,67 @@
+﻿@model Trail4Healthtest.Models.Turista
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<div class="bread_area">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <ol class="breadcrumb">
+                    <li><a href="/">Trail4Health</a></li>
+                    <li class="active">Detalhes do turista</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <section class="page col-sm-12">
+            <h2 class="page-title">Detalhes Turista</h2>
+            <div class="row">
+                <div class="col-lg-10">
+                    <dl class="dl-horizontal">
+                        <dt>
+                            Nome
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.nome)
+                        </dd>
+                        <dt>
+                            Número de Telefone
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.numeroTelefone)
+                        </dd>
+                        <dt>
+                            NIF
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.nif)
+                        </dd>
+                        <dt>
+                            Email
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.email)
+                        </dd>
+                        <dt>
+                            Contato de Emergência
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.contato_emergencia)
+                        </dd>
+                    </dl>
+                </div>
+                <div>
+                    <button class="btn btn-info">
+                        <a asp-action="Edit" asp-route-id="@Model.turistaId">Editar</a>
+                    </button> |
+                    <button class="btn btn-default"><a asp-action="Index">Voltar à lista</a></button>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>

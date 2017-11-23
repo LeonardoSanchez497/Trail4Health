@@ -1,0 +1,100 @@
+﻿@model IEnumerable<Trail4Healthtest.Models.Trilho>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+<div class="bread_area">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <ol class="breadcrumb">
+                    <li><a href="/">Trail4Health</a></li>
+                    <li class="active">Consultar trails</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <section class="page col-sm-12">
+            <h2 class="page-title">Consultar trails</h2>
+            <div class="row">
+                <div class="col-lg-12">
+                    <p>
+                        <button class="btn btn-default"><a asp-action="Create">Novo trilho</a></button>
+                    </p>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>
+                                    Distância a percorrer
+                                </th>
+                                <th>
+                                    Duração Média
+                                </th>
+                                <th>
+                                    Local de início
+                                </th>
+                                <th>
+                                    Local de fim
+                                </th>
+                                <th>
+                                   Nível de dificuldade
+                                </th>
+                                <th>
+                                    Desnível
+                                </th>
+                                <th>
+                                    Etapa aconselhada
+                                </th>
+                                <th>
+                                    Ativo
+                                </th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.distancia_a_percorrer)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.duracao_media)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.loc_inicio)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.loc_fim)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.cod_dificuldade)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.cod_desnivel)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.cod_etapa_aconselhada)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.ativo)
+                                    </td>
+                                    <td>
+                                        <a asp-action="Edit" asp-route-id="@item.trilhoId">Editar</a> |
+                                        <a asp-action="Details" asp-route-id="@item.trilhoId">Ver mais detalhes</a> |
+                                        <a asp-action="Delete" asp-route-id="@item.trilhoId">Apagar</a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
