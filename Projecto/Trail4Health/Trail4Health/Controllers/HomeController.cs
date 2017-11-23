@@ -1,12 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Trail4Healthtest.Models;
 
-namespace Trail4Healthtest.Controllers
+namespace Trail4Health.Controllers
 {
     public class HomeController : Controller
     {
@@ -17,7 +15,7 @@ namespace Trail4Healthtest.Controllers
 
         public IActionResult About()
         {
-            ViewData["Message"] = "Your application description page.";
+            ViewData["Message"] = "Trabalho de Grupo";
 
             return View();
         }
@@ -31,7 +29,15 @@ namespace Trail4Healthtest.Controllers
 
         public IActionResult Error()
         {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            return View();
+        }
+
+        [HttpGet]
+        public IActionResult Newsletter()
+        {
+            ViewData["Message"] = "Your newsletter page";
+
+            return View();
         }
     }
 }
