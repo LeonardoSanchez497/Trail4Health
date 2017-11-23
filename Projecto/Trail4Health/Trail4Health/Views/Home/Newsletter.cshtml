@@ -1,0 +1,57 @@
+
+@{
+    ViewData["Title"] = "Newsletter";
+}
+<h2>@ViewData["Title"]</h2>
+
+
+<form asp-action="Newsletter" method="post">
+
+<div>
+    <div class="panel panel-default" stryle="margin-top:2ex;">
+        <div class="panel-heading">
+            <h3 class="panel-title">Newsletter </h3>
+        </div>
+    </div>
+    <div class="panel-body">
+        <div class="form-group">
+            <label asp-area="Data">Data: </label>
+          
+           <!--<datalist asp-for="Data" class="form-control" />-->
+        </div>
+        <div class="form-group">
+            <label asp-area="Titulo">Titulo: </label>
+            <!--<input asp-area="Titulo" class="form-control" />-->
+        </div>
+
+        <div class="form-group">
+            <img asp-for="Foto">Foto<img>
+            <img asp-for="Foto" class="form-control" />
+        </div>
+
+        <div class="form-group">
+            <label asp-area="Mensagem">Mensagem</label>
+            <input asp-area="Mensagem" class="form-control" />
+        </div>
+
+      
+
+        <div class="form-group">
+            <textarea asp-area="Comentarios">Comentarios</textarea>
+            <input asp-area="Comentarios" class="form-control" />
+        </div>
+
+
+        <div class="panel-footer">
+            <button type="submit" class="btn btn-primary">Guardar</button>
+            <button type="submit" class="btn btn-primary">Enviar</button>
+        </div>
+
+
+
+
+
+    </div>       
+    </div>
+    <div asp-validation-summary="All"></div>
+</form>

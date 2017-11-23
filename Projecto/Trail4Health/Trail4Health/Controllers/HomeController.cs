@@ -31,5 +31,13 @@ namespace Trail4Health.Controllers
         {
             return View();
         }
+
+        [HttpGet]
+        public IActionResult Newsletter()
+        {
+            ViewData["Message"] = "Your newsletter page";
+
+            return View();
+        }
     }
 }

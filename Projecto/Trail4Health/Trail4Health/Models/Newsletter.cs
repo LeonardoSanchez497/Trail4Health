@@ -4,21 +4,35 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
+
 namespace Trail4Health.Models
 {
     public class Newsletter
     {
-        [Required(ErrorMessage = " Enviar mail para:")]
-        public string Para { get; set; }
+        
+        public string Data { get;  }
 
-        [Required(ErrorMessage = " Introduza um assunto")]
+        [Required(ErrorMessage = " Assunto")]
         public string Assunto { get; set; }
 
-        [Required(ErrorMessage = " Introduza uma mensagem")]
+        [Required(ErrorMessage = " Mensagem")]
         public string Mensagem { get; set; }
 
-        [Required(ErrorMessage = " submeter")]
+        [Required(ErrorMessage = " Foto")]
+        public string Foto { get; set; }
+
+        [Required(ErrorMessage = " Comentarios")]
+        public string Comentarios { get; set; }
+
+        [Required(ErrorMessage = " Guardar")]
+        public bool? Guardar { get; set; }
+
+        [Required(ErrorMessage = " Enviar")]
         public bool? Enviar { get; set; }
+
+        public string Email { get; set; }
+
+
     }
 }
 
