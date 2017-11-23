@@ -10748,7 +10748,7 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Leonardo Sanchez\\.nuget\\packages\\": {}
+    "C:\\Users\\Fábio\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
@@ -10756,14 +10756,14 @@
       "hideWarningsAndErrors": true
     },
     "restore": {
-      "projectUniqueName": "d:\\Users\\Leonardo Sanchez\\Documents\\GitHub\\Trail4Health\\Projecto\\Trail4Health\\Trail4Health\\Trail4Health.csproj",
+      "projectUniqueName": "C:\\Users\\Fábio\\Documents\\GitHub\\Trail4Health\\Projecto\\Trail4Health\\Trail4Health\\Trail4Health.csproj",
       "projectName": "Trail4Health",
-      "projectPath": "d:\\Users\\Leonardo Sanchez\\Documents\\GitHub\\Trail4Health\\Projecto\\Trail4Health\\Trail4Health\\Trail4Health.csproj",
-      "packagesPath": "C:\\Users\\Leonardo Sanchez\\.nuget\\packages\\",
-      "outputPath": "d:\\Users\\Leonardo Sanchez\\Documents\\GitHub\\Trail4Health\\Projecto\\Trail4Health\\Trail4Health\\obj\\",
+      "projectPath": "C:\\Users\\Fábio\\Documents\\GitHub\\Trail4Health\\Projecto\\Trail4Health\\Trail4Health\\Trail4Health.csproj",
+      "packagesPath": "C:\\Users\\Fábio\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Fábio\\Documents\\GitHub\\Trail4Health\\Projecto\\Trail4Health\\Trail4Health\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Leonardo Sanchez\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Fábio\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -10771,12 +10771,18 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "netcoreapp1.1": {
           "projectReferences": {}
         }
+      },
+      "warningProperties": {
+        "warnAsError": [
+          "NU1605"
+        ]
       }
     },
     "frameworks": {
