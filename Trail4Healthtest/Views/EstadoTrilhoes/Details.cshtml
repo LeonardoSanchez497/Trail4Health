@@ -1,0 +1,65 @@
+﻿@model Trail4Healthtest.Models.EstadoTrilho
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<div class="bread_area">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <ol class="breadcrumb">
+                    <li><a href="/">Trail4Health</a></li>
+                    <li class="active">Estado do trilho</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <section class="page col-sm-12">
+            <div class="row">
+                <div class="col-lg-12">
+                    <dl class="dl-horizontal">
+                        <dt>
+                            Nome do Trilho
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.Trilho.Nometrilho)
+                        </dd>
+                        <dt>
+                            Causa
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.Causa)
+                        </dd>
+                        <dt>
+                            Data Início
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.Datainicio)
+                        </dd>
+                        <dt>
+                            Data prevista de fim
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.Datafim)
+                        </dd>
+
+                        <dt>
+                            Estado
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.Estado.Nomeestado)
+                        </dd>
+
+                    </dl>
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-toolbar"><a asp-action="Edit" asp-route-id="@Model.EstadoTrilhoId">Editar</a></button> | <button class="btn btn-info"><a asp-action="Index">Voltar à lista</a></button>
+                </div>
+                </div>
+            </section>
+        </div>
+    </div>

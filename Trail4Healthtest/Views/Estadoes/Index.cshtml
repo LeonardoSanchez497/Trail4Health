@@ -1,0 +1,63 @@
+﻿@model IEnumerable<Trail4Healthtest.Models.Estado>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<div class="bread_area">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <ol class="breadcrumb">
+                    <li><a href="/">Trail4Health</a></li>
+                    <li class="active">Todos os Disníveis</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <section class="page col-sm-12">
+            <div class="row">
+                <div class="col-lg-12">
+                    <button class="btn btn-info">
+                        <a asp-action="Create">Criar Novo Estado</a>
+                    </button>
+                    <br />
+                    <br />
+                    <table class="table table-condensed">
+                        <thead>
+                            <tr>
+                                <th>
+                                    Nome do Estado
+                                </th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Nomeestado)
+                    </td>
+                    <td>
+                        <button class="btn btn-toolbar">
+                            <a asp-action="Edit" asp-route-id="@item.EstadoId">Editar</a>
+                        </button> |
+                        <button class="btn btn-default">
+                            <a asp-action="Details" asp-route-id="@item.EstadoId">Detalhes</a>
+                        </button> |
+                        <button class="btn btn-danger">
+                            <a asp-action="Delete" asp-route-id="@item.EstadoId">Apagar</a>
+                        </button>
+                    </td>
+                </tr>
+}
+                        </tbody>
+                    </table>
+                </div>
+                </div>
+            </section>
+        </div>
+    </div>

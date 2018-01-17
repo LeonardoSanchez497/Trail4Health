@@ -1,7 +1,7 @@
-﻿@model Trail4Healthtest.Models.Turista
+﻿@model Trail4Healthtest.Models.AgendaTuristaTrilho
 
 @{
-    ViewData["Title"] = "Delete";
+    ViewData["Title"] = "Details";
 }
 
 <div class="bread_area">
@@ -10,7 +10,7 @@
             <div class="col-sm-12">
                 <ol class="breadcrumb">
                     <li><a href="/">Trail4Health</a></li>
-                    <li class="active">Apagar Turista</li>
+                    <li class="active">Agendar Trilho</li>
                 </ol>
             </div>
         </div>
@@ -19,49 +19,47 @@
 <div class="container">
     <div class="row">
         <section class="page col-sm-12">
-            <h2 class="page-title">Apagar turista</h2>
             <div class="row">
-                <div class="col-lg-10">
+                <div class="col-lg-12">
+                    <hr />
                     <dl class="dl-horizontal">
                         <dt>
-                            Nome
+                            Data Ínicio
                         </dt>
                         <dd>
-                            @Html.DisplayFor(model => model.nome)
+                            @Html.DisplayFor(model => model.Datainicio)
                         </dd>
                         <dt>
-                            Número de Telefone
+                            Data Fim
                         </dt>
                         <dd>
-                            @Html.DisplayFor(model => model.numeroTelefone)
+                            @Html.DisplayFor(model => model.Datafim)
                         </dd>
                         <dt>
-                           NIF
+                            Tempo Gasto
                         </dt>
                         <dd>
-                            @Html.DisplayFor(model => model.nif)
+                            @Html.DisplayFor(model => model.Tempogasto)
                         </dd>
                         <dt>
-                           Email
+                            Nome Trilho
                         </dt>
                         <dd>
-                            @Html.DisplayFor(model => model.email)
+                            @Html.DisplayFor(model => model.Trilho.Nometrilho)
                         </dd>
                         <dt>
-                            Contato de Emergência
+                            Turista
                         </dt>
                         <dd>
-                            @Html.DisplayFor(model => model.contato_emergencia)
+                            @Html.DisplayFor(model => model.Turista.Nome)
                         </dd>
                     </dl>
-
-                    <form asp-action="Delete">
-                        <input type="hidden" asp-for="turistaId" />
-                        <input type="submit" value="Apagar" class="btn btn-default" /> |
-                        <button class="btn btn-default"><a asp-action="Index">Voltar à lista</a></button>
-</form>
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-toolbar"><a asp-action="Edit" asp-route-id="@Model.AgendaId">Editar</a></button> | <button class="btn btn-info"><a asp-action="Index">Voltar à lista</a></button>
                 </div>
             </div>
         </section>
     </div>
 </div>
+

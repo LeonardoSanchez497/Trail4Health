@@ -4,6 +4,7 @@
     ViewData["Title"] = "Delete";
 }
 
+
 <div class="bread_area">
     <div class="container">
         <div class="row">
@@ -19,70 +20,84 @@
 <div class="container">
     <div class="row">
         <section class="page col-sm-12">
-            <h2 class="page-title">Apagar trilho</h2>
             <div class="row">
-                <div class="col-lg-10">
-                    <dl class="dl-horizontal">
-                        <dt>
-                            @Html.DisplayNameFor(model => model.distancia_a_percorrer)
-                        </dt>
-                        <dd>
-                            @Html.DisplayFor(model => model.distancia_a_percorrer)
-                        </dd>
-                        <dt>
-                            @Html.DisplayNameFor(model => model.duracao_media)
-                        </dt>
-                        <dd>
-                            @Html.DisplayFor(model => model.duracao_media)
-                        </dd>
-                        <dt>
-                            @Html.DisplayNameFor(model => model.loc_inicio)
-                        </dt>
-                        <dd>
-                            @Html.DisplayFor(model => model.loc_inicio)
-                        </dd>
-                        <dt>
-                            @Html.DisplayNameFor(model => model.loc_fim)
-                        </dt>
-                        <dd>
-                            @Html.DisplayFor(model => model.loc_fim)
-                        </dd>
-                        <dt>
-                            @Html.DisplayNameFor(model => model.cod_dificuldade)
-                        </dt>
-                        <dd>
-                            @Html.DisplayFor(model => model.cod_dificuldade)
-                        </dd>
-                        <dt>
-                            @Html.DisplayNameFor(model => model.cod_desnivel)
-                        </dt>
-                        <dd>
-                            @Html.DisplayFor(model => model.cod_desnivel)
-                        </dd>
-                        <dt>
-                            @Html.DisplayNameFor(model => model.cod_etapa_aconselhada)
-                        </dt>
-                        <dd>
-                            @Html.DisplayFor(model => model.cod_etapa_aconselhada)
-                        </dd>
-                        <dt>
-                            @Html.DisplayNameFor(model => model.ativo)
-                        </dt>
-                        <dd>
-                            @Html.DisplayFor(model => model.ativo)
-                        </dd>
-                    </dl>
+                <div class="col-lg-12">
+                    <h3>Tem a certeza que pretende apagar este registo?</h3>
+                    <div>
+                        <hr />
+                        <dl class="dl-horizontal">
+                            <dt>
+                                Nome do trilho
+                            </dt>
+                            <dd>
+                                @Html.DisplayFor(model => model.Nometrilho)
+                            </dd>
+                            <dt>
+                              Distância a percorrer
+                            </dt>
+                            <dd>
+                                @Html.DisplayFor(model => model.Distanciaapercorrer)
+                            </dd>
+                            <dt>
+                                Duração Média
+                            </dt>
+                            <dd>
+                                @Html.DisplayFor(model => model.Duracaomedia)
+                            </dd>
+                            <dt>
+                               Local de fim
+                            </dt>
+                            <dd>
+                                @Html.DisplayFor(model => model.Locfim)
+                            </dd>
+                            <dt>
+                                Local de Início
+                            </dt>
+                            <dd>
+                                @Html.DisplayFor(model => model.Locinicio)
+                            </dd>
+                            <dt>
+                                Ativo?
+                            </dt>
+                            <dd>
+                                @Html.DisplayFor(model => model.Ativo)
+                            </dd>
+                            <dt>
+                                Newsletter Ativa?
+                            </dt>
+                            <dd>
+                                @Html.DisplayFor(model => model.NewsletterAtiva)
+                            </dd>
+                            <dt>
+                                Inclinação
+                            </dt>
+                            <dd>
+                                @Html.DisplayFor(model => model.CoddesnivelNavigation.Nomedesnivel)
+                            </dd>
+                            <dt>
+                               Dificuldade
+                            </dt>
+                            <dd>
+                                @Html.DisplayFor(model => model.CoddificuldadeNavigation.Nomedificuldade)
+                            </dd>
+                            <dt>
+                               Melhor época para fazer o trilho
+                            </dt>
+                            <dd>
+                                @Html.DisplayFor(model => model.CodepocaaconselhdaNavigation.Nomeepoca)
+                            </dd>
+                        </dl>
 
-                    <form asp-action="Delete">
-                        <input type="hidden" asp-for="trilhoId" />
-                        <input type="submit" value="Delete" class="btn btn-default" /> |
-                        <button class="btn btn-default">
-                            <a asp-action="Index">Volta à Lista</a>
-                        </button>
-                    </form>
+                        <form asp-action="Delete">
+                            <input type="hidden" asp-for="TrilhoId" />
+                            <input type="submit" value="Apagar" class="btn btn-danger" />
+                            | <button class="btn btn-info">
+                                <a asp-action="Index">Voltar à lista</a>
+                            </button>
+                        </form>
+                    </div>
+                    </div>
                 </div>
-
-            </div>
-        </section>
+            </section>
+        </div>
     </div>
-</div>

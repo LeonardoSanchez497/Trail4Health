@@ -16,7 +16,7 @@ namespace Trail4Healthtest.Models.AccountViewModels
         [DataType(DataType.Password)]
         public string Password { get; set; }
 
-        [Display(Name = "Remember me?")]
+        [Display(Name = "Lembrar Password?")]
         public bool RememberMe { get; set; }
     }
 }

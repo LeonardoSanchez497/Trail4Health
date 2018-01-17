@@ -10,7 +10,7 @@
             <div class="col-sm-12">
                 <ol class="breadcrumb">
                     <li><a href="/">Trail4Health</a></li>
-                    <li class="active">Detalhes do trilho</li>
+                    <li class="active">Detalhes trilho</li>
                 </ol>
             </div>
         </div>
@@ -19,63 +19,91 @@
 <div class="container">
     <div class="row">
         <section class="page col-sm-12">
-            <h2 class="page-title">Detalhes trilho</h2>
             <div class="row">
-                <div class="col-lg-10">
+                <div class="col-lg-12">
                     <dl class="dl-horizontal">
+                        <dt>
+                            Nome do trilho
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.Nometrilho)
+                        </dd>
                         <dt>
                             Distância a percorrer
                         </dt>
                         <dd>
-                            @Html.DisplayFor(model => model.distancia_a_percorrer)
+                            @Html.DisplayFor(model => model.Distanciaapercorrer)
                         </dd>
                         <dt>
-                            Duração média
+                            Duração Média
                         </dt>
                         <dd>
-                            @Html.DisplayFor(model => model.duracao_media)
-                        </dd>
-                        <dt>
-                           Local de início
-                        </dt>
-                        <dd>
-                            @Html.DisplayFor(model => model.loc_inicio)
+                            @Html.DisplayFor(model => model.Duracaomedia)
                         </dd>
                         <dt>
                             Local de fim
                         </dt>
                         <dd>
-                            @Html.DisplayFor(model => model.loc_fim)
+                            @Html.DisplayFor(model => model.Locfim)
                         </dd>
                         <dt>
-                           Nível de dificuldade
+                            Local de Início
                         </dt>
                         <dd>
-                            @Html.DisplayFor(model => model.cod_dificuldade)
+                            @Html.DisplayFor(model => model.Locinicio)
                         </dd>
                         <dt>
-                            Desnível
+                            Ativo?
                         </dt>
                         <dd>
-                            @Html.DisplayFor(model => model.cod_desnivel)
+                            @if (@Html.DisplayTextFor(model => model.Ativo) == "True")
+                            {
+                                <text>Sim</text>
+
+                            }
+                            else if (@Html.DisplayTextFor(model => model.Ativo) == "False")
+                            {
+                                <text>Não</text>
+                            }
                         </dd>
                         <dt>
-                            Etapa aconselhada
+                            Newsletter Ativa?
                         </dt>
                         <dd>
-                            @Html.DisplayFor(model => model.cod_etapa_aconselhada)
+                            @if (@Html.DisplayTextFor(model => model.NewsletterAtiva) == "True")
+                            {
+                                <text>Sim</text>
+
+                            }
+                            else if (@Html.DisplayTextFor(model => model.NewsletterAtiva) == "False")
+                            {
+                                <text>Não</text>
+                            }
                         </dd>
                         <dt>
-                            Ativo
+                            Inclinação
                         </dt>
                         <dd>
-                            @Html.DisplayFor(model => model.ativo)
+                            @Html.DisplayFor(model => model.CoddesnivelNavigation.Nomedesnivel)
+                        </dd>
+                        <dt>
+                            Dificuldade
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.CoddificuldadeNavigation.Nomedificuldade)
+                        </dd>
+                        <dt>
+                            Melhor época
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.CodepocaaconselhdaNavigation.Nomeepoca)
                         </dd>
                     </dl>
                 </div>
-                <div>
-                    <button class="btn btn-info">
-                        <a asp-action="Edit" asp-route-id="@Model.trilhoId">Editar</a></button> |
-                    <button class="btn btn-default">
-                        <a asp-action="Index">Volta à Lista</a></button>
+                <div class="form-group">
+                    <button class="btn btn-toolbar"><a asp-action="Edit" asp-route-id="@Model.TrilhoId">Editar</a></button> | <button class="btn btn-info"><a asp-action="Index">Voltar à lista</a></button>
+                </div>
+            </div>
+        </section>
+    </div>
 </div>

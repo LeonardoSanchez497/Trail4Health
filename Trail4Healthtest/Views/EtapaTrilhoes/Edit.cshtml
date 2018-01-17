@@ -1,0 +1,58 @@
+﻿@model Trail4Healthtest.Models.EtapaTrilho
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<div class="bread_area">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <ol class="breadcrumb">
+                    <li><a href="/">Trail4Health</a></li>
+                    <li class="active">Editar comentário do trilho</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <section class="page col-sm-12">
+            <div class="row">
+                <div class="col-lg-12">
+                    <form asp-action="Edit">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <input type="hidden" asp-for="EtapatrilhoId" />
+                        <div class="form-group">
+                            <label asp-for="TrilhoId" class="control-label">Nome do Trilho</label>
+                            <select asp-for="TrilhoId" class="form-control" asp-items="ViewBag.TrilhoId"></select>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Etapaid" class="control-label">Nome da Etapa</label>
+                            <select asp-for="Etapaid" class="form-control" asp-items="ViewBag.Etapaid"></select>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="OrdemEtapa" class="control-label">Ordem da Etapa</label>
+                            <input asp-for="OrdemEtapa" class="form-control" />
+                            <span asp-validation-for="OrdemEtapa" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Ativo" class="control-label">Ativar Etapa?</label>&nbsp;
+                            <label>
+                                <input asp-for="Ativo" />
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" value="Atualizar" class="btn btn-success" /> | <button class="btn btn-info"><a asp-action="Index">Voltar à lista</a></button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            </section>
+        </div>
+    </div>
+
+            @section Scripts {
+                @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+            }

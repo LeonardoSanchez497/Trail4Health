@@ -1,0 +1,39 @@
+﻿@model Trail4Healthtest.Models.EpocaAconcelhada
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<div class="bread_area">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <ol class="breadcrumb">
+                    <li><a href="/">Trail4Health</a></li>
+                    <li class="active">Detalhes da Época</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <section class="page col-sm-12">
+            <div class="row">
+                <div class="col-lg-12">
+                    <dl class="dl-horizontal">
+                        <dt>
+                            Nome da Época
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.Nomeepoca)
+                        </dd>
+                    </dl>
+                    <div class="form-group">
+                        <button class="btn btn-toolbar"><a asp-action="Edit" asp-route-id="@Model.EpocaId">Editar</a></button> | <button class="btn btn-info"><a asp-action="Index">Voltar à lista</a></button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>

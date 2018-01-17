@@ -5,16 +5,15 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using Trail4Healthtest.Data;
 using Trail4Healthtest.Models;
 
 namespace Trail4Healthtest.Controllers
 {
     public class NewslettersController : Controller
     {
-        private readonly TrailsDbContext _context;
+        private readonly Trails4HealthContext _context;
 
-        public NewslettersController(TrailsDbContext context)
+        public NewslettersController(Trails4HealthContext context)
         {
             _context = context;
         }
@@ -22,7 +21,8 @@ namespace Trail4Healthtest.Controllers
         // GET: Newsletters
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Newsletter.ToListAsync());
+            var trails4HealthContext = _context.Newsletter.Include(n => n.Trilho);
+            return View(await trails4HealthContext.ToListAsync());
         }
 
         // GET: Newsletters/Details/5
@@ -34,7 +34,8 @@ namespace Trail4Healthtest.Controllers
             }
 
             var newsletter = await _context.Newsletter
-                .SingleOrDefaultAsync(m => m.newletterId == id);
+                .Include(n => n.Trilho)
+                .SingleOrDefaultAsync(m => m.NewletterId == id);
             if (newsletter == null)
             {
                 return NotFound();
@@ -46,6 +47,7 @@ namespace Trail4Healthtest.Controllers
         // GET: Newsletters/Create
         public IActionResult Create()
         {
+            ViewData["TrilhoId"] = new SelectList(_context.Trilho, "TrilhoId", "Nometrilho");
             return View();
         }
 
@@ -54,7 +56,7 @@ namespace Trail4Healthtest.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("newletterId,data,descricao,foto")] Newsletter newsletter)
+        public async Task<IActionResult> Create([Bind("NewletterId,Data,Descricao,Foto,TrilhoId")] Newsletter newsletter)
         {
             if (ModelState.IsValid)
             {
@@ -62,6 +64,7 @@ namespace Trail4Healthtest.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["TrilhoId"] = new SelectList(_context.Trilho, "TrilhoId", "Nometrilho", newsletter.TrilhoId);
             return View(newsletter);
         }
 
@@ -73,11 +76,12 @@ namespace Trail4Healthtest.Controllers
                 return NotFound();
             }
 
-            var newsletter = await _context.Newsletter.SingleOrDefaultAsync(m => m.newletterId == id);
+            var newsletter = await _context.Newsletter.SingleOrDefaultAsync(m => m.NewletterId == id);
             if (newsletter == null)
             {
                 return NotFound();
             }
+            ViewData["TrilhoId"] = new SelectList(_context.Trilho, "TrilhoId", "Nometrilho", newsletter.TrilhoId);
             return View(newsletter);
         }
 
@@ -86,9 +90,9 @@ namespace Trail4Healthtest.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("newletterId,data,descricao,foto")] Newsletter newsletter)
+        public async Task<IActionResult> Edit(int id, [Bind("NewletterId,Data,Descricao,Foto,TrilhoId")] Newsletter newsletter)
         {
-            if (id != newsletter.newletterId)
+            if (id != newsletter.NewletterId)
             {
                 return NotFound();
             }
@@ -102,7 +106,7 @@ namespace Trail4Healthtest.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!NewsletterExists(newsletter.newletterId))
+                    if (!NewsletterExists(newsletter.NewletterId))
                     {
                         return NotFound();
                     }
@@ -113,6 +117,7 @@ namespace Trail4Healthtest.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["TrilhoId"] = new SelectList(_context.Trilho, "TrilhoId", "Nometrilho", newsletter.TrilhoId);
             return View(newsletter);
         }
 
@@ -125,7 +130,8 @@ namespace Trail4Healthtest.Controllers
             }
 
             var newsletter = await _context.Newsletter
-                .SingleOrDefaultAsync(m => m.newletterId == id);
+                .Include(n => n.Trilho)
+                .SingleOrDefaultAsync(m => m.NewletterId == id);
             if (newsletter == null)
             {
                 return NotFound();
@@ -139,7 +145,7 @@ namespace Trail4Healthtest.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var newsletter = await _context.Newsletter.SingleOrDefaultAsync(m => m.newletterId == id);
+            var newsletter = await _context.Newsletter.SingleOrDefaultAsync(m => m.NewletterId == id);
             _context.Newsletter.Remove(newsletter);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
@@ -147,7 +153,7 @@ namespace Trail4Healthtest.Controllers
 
         private bool NewsletterExists(int id)
         {
-            return _context.Newsletter.Any(e => e.newletterId == id);
+            return _context.Newsletter.Any(e => e.NewletterId == id);
         }
     }
 }

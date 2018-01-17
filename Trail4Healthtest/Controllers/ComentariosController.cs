@@ -5,16 +5,15 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using Trail4Healthtest.Data;
 using Trail4Healthtest.Models;
 
 namespace Trail4Healthtest.Controllers
 {
     public class ComentariosController : Controller
     {
-        private readonly TrailsDbContext _context;
+        private readonly Trails4HealthContext _context;
 
-        public ComentariosController(TrailsDbContext context)
+        public ComentariosController(Trails4HealthContext context)
         {
             _context = context;
         }
@@ -22,8 +21,8 @@ namespace Trail4Healthtest.Controllers
         // GET: Comentarios
         public async Task<IActionResult> Index()
         {
-            var trailsDbContext = _context.Comentarios.Include(c => c.turista);
-            return View(await trailsDbContext.ToListAsync());
+            var trails4HealthContext = _context.Comentarios.Include(c => c.Avaliacao).Include(c => c.Trilho).Include(c => c.Turista);
+            return View(await trails4HealthContext.ToListAsync());
         }
 
         // GET: Comentarios/Details/5
@@ -35,8 +34,10 @@ namespace Trail4Healthtest.Controllers
             }
 
             var comentarios = await _context.Comentarios
-                .Include(c => c.turista)
-                .SingleOrDefaultAsync(m => m.comentarioId == id);
+                .Include(c => c.Avaliacao)
+                .Include(c => c.Trilho)
+                .Include(c => c.Turista)
+                .SingleOrDefaultAsync(m => m.ComentarioId == id);
             if (comentarios == null)
             {
                 return NotFound();
@@ -48,7 +49,9 @@ namespace Trail4Healthtest.Controllers
         // GET: Comentarios/Create
         public IActionResult Create()
         {
-            ViewData["turistaId"] = new SelectList(_context.Turista, "turistaId", "nome");
+            ViewData["AvaliacaoId"] = new SelectList(_context.Avaliacao, "AvaliacaoId", "Classificacao");
+            ViewData["TrilhoId"] = new SelectList(_context.Trilho, "TrilhoId", "Nometrilho");
+            ViewData["TuristaId"] = new SelectList(_context.Turista, "TuristaId", "Nome");
             return View();
         }
 
@@ -57,7 +60,7 @@ namespace Trail4Healthtest.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("comentarioId,turistaId,trilhoId,duracaoTrilho,avaliacao,comentar")] Comentarios comentarios)
+        public async Task<IActionResult> Create([Bind("ComentarioId,AvaliacaoId,Comentar,Completou,DuracaoTrilho,TrilhoId,TuristaId")] Comentarios comentarios)
         {
             if (ModelState.IsValid)
             {
@@ -65,7 +68,9 @@ namespace Trail4Healthtest.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["turistaId"] = new SelectList(_context.Turista, "turistaId", "nome", comentarios.turistaId);
+            ViewData["AvaliacaoId"] = new SelectList(_context.Avaliacao, "AvaliacaoId", "Classificacao", comentarios.AvaliacaoId);
+            ViewData["TrilhoId"] = new SelectList(_context.Trilho, "TrilhoId", "Nometrilho", comentarios.TrilhoId);
+            ViewData["TuristaId"] = new SelectList(_context.Turista, "TuristaId", "Nome", comentarios.TuristaId);
             return View(comentarios);
         }
 
@@ -77,12 +82,14 @@ namespace Trail4Healthtest.Controllers
                 return NotFound();
             }
 
-            var comentarios = await _context.Comentarios.SingleOrDefaultAsync(m => m.comentarioId == id);
+            var comentarios = await _context.Comentarios.SingleOrDefaultAsync(m => m.ComentarioId == id);
             if (comentarios == null)
             {
                 return NotFound();
             }
-            ViewData["turistaId"] = new SelectList(_context.Turista, "turistaId", "nome", comentarios.turistaId);
+            ViewData["AvaliacaoId"] = new SelectList(_context.Avaliacao, "AvaliacaoId", "Classificacao", comentarios.AvaliacaoId);
+            ViewData["TrilhoId"] = new SelectList(_context.Trilho, "TrilhoId", "Nometrilho", comentarios.TrilhoId);
+            ViewData["TuristaId"] = new SelectList(_context.Turista, "TuristaId", "Nome", comentarios.TuristaId);
             return View(comentarios);
         }
 
@@ -91,9 +98,9 @@ namespace Trail4Healthtest.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("comentarioId,turistaId,trilhoId,duracaoTrilho,avaliacao,comentar")] Comentarios comentarios)
+        public async Task<IActionResult> Edit(int id, [Bind("ComentarioId,AvaliacaoId,Comentar,Completou,DuracaoTrilho,TrilhoId,TuristaId")] Comentarios comentarios)
         {
-            if (id != comentarios.comentarioId)
+            if (id != comentarios.ComentarioId)
             {
                 return NotFound();
             }
@@ -107,7 +114,7 @@ namespace Trail4Healthtest.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!ComentariosExists(comentarios.comentarioId))
+                    if (!ComentariosExists(comentarios.ComentarioId))
                     {
                         return NotFound();
                     }
@@ -118,7 +125,9 @@ namespace Trail4Healthtest.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["turistaId"] = new SelectList(_context.Turista, "turistaId", "turistaId", comentarios.turistaId);
+            ViewData["AvaliacaoId"] = new SelectList(_context.Avaliacao, "AvaliacaoId", "Classificacao", comentarios.AvaliacaoId);
+            ViewData["TrilhoId"] = new SelectList(_context.Trilho, "TrilhoId", "Nometrilho", comentarios.TrilhoId);
+            ViewData["TuristaId"] = new SelectList(_context.Turista, "TuristaId", "Nome", comentarios.TuristaId);
             return View(comentarios);
         }
 
@@ -131,8 +140,10 @@ namespace Trail4Healthtest.Controllers
             }
 
             var comentarios = await _context.Comentarios
-                .Include(c => c.turista)
-                .SingleOrDefaultAsync(m => m.comentarioId == id);
+                .Include(c => c.Avaliacao)
+                .Include(c => c.Trilho)
+                .Include(c => c.Turista)
+                .SingleOrDefaultAsync(m => m.ComentarioId == id);
             if (comentarios == null)
             {
                 return NotFound();
@@ -146,7 +157,7 @@ namespace Trail4Healthtest.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var comentarios = await _context.Comentarios.SingleOrDefaultAsync(m => m.comentarioId == id);
+            var comentarios = await _context.Comentarios.SingleOrDefaultAsync(m => m.ComentarioId == id);
             _context.Comentarios.Remove(comentarios);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
@@ -154,7 +165,7 @@ namespace Trail4Healthtest.Controllers
 
         private bool ComentariosExists(int id)
         {
-            return _context.Comentarios.Any(e => e.comentarioId == id);
+            return _context.Comentarios.Any(e => e.ComentarioId == id);
         }
     }
 }

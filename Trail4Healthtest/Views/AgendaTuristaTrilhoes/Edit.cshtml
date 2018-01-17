@@ -1,0 +1,62 @@
+﻿@model Trail4Healthtest.Models.AgendaTuristaTrilho
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<div class="bread_area">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <ol class="breadcrumb">
+                    <li><a href="/">Trail4Health</a></li>
+                    <li class="active">Editar agenda</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <section class="page col-sm-12">
+            <div class="row">
+                <div class="col-lg-12">
+                    <form asp-action="Edit">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <input type="hidden" asp-for="AgendaId" />
+                        <div class="form-group">
+                            <label asp-for="Trilhoid" class="control-label">Nome Trilho</label>
+                            <select asp-for="Trilhoid" class="form-control" asp-items="ViewBag.Trilhoid"></select>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Turistaid" class="control-label">Nome Turista</label>
+                            <select asp-for="Turistaid" class="form-control" asp-items="ViewBag.Turistaid"></select>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Datainicio" class="control-label">Data de Início</label>
+                            <input asp-for="Datainicio" class="form-control" />
+                            <span asp-validation-for="Datainicio" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Datafim" class="control-label">Data Fim</label>
+                            <input asp-for="Datafim" class="form-control" />
+                            <span asp-validation-for="Datafim" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Tempogasto" class="control-label">Tempo Gasto</label>
+                            <input asp-for="Tempogasto" class="form-control" />
+                            <span asp-validation-for="Tempogasto" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" value="Atualizar" class="btn btn-success" /> | <button class="btn btn-info"><a asp-action="Index">Voltar à lista</a></button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

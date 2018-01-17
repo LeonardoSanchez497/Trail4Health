@@ -10,7 +10,7 @@
             <div class="col-sm-12">
                 <ol class="breadcrumb">
                     <li><a href="/">Trail4Health</a></li>
-                    <li class="active">Newsletter</li>
+                    <li class="active">Todos os Comentários</li>
                 </ol>
             </div>
         </div>
@@ -19,51 +19,63 @@
 <div class="container">
     <div class="row">
         <section class="page col-sm-12">
-            <h2 class="page-title">Consultar newsletter</h2>
             <div class="row">
                 <div class="col-lg-12">
-                    <p>
-                        <button class="btn btn-default"><a asp-action="Create">Nova newsletter</a></button>
-                    </p>
-                    <table class="table">
+                    <button class="btn btn-info">
+                        <a asp-action="Create">Criar nova newsletter</a>
+                    </button>
+                    <br />
+                    <br />
+                    <table class="table table-condensed">
                         <thead>
                             <tr>
+                                <th>
+                                    Nome do Trilho
+                                </th>
                                 <th>
                                     Data
                                 </th>
                                 <th>
-                                    Descricao
+                                   Descrição
                                 </th>
                                 <th>
-                                    Foto
+                                   Foto
                                 </th>
+
                                 <th></th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach (var item in Model)
                             {
-                                <tr>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.data)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.descricao)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.foto)
-                                    </td>
-                                    <td>
-                                        <a asp-action="Edit" asp-route-id="@item.newletterId">Editar</a> |
-                                        <a asp-action="Details" asp-route-id="@item.newletterId">Ver mais detalhes</a> |
-                                        <a asp-action="Delete" asp-route-id="@item.newletterId">Apagar</a>
-                                    </td>
-                                </tr>
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Trilho.Nometrilho)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Data)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Descricao)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Foto)
+                                </td>
+
+                                <td>
+                                    <button class="btn btn-toolbar">
+                                        <a asp-action="Edit" asp-route-id="@item.NewletterId">Editar</a>
+                                    </button> |
+                                    <button class="btn btn-danger">
+                                        <a asp-action="Delete" asp-route-id="@item.NewletterId">Apagar</a>
+                                    </button>
+                                </td>
+                            </tr>
                             }
                         </tbody>
                     </table>
+                    </div>
                 </div>
-            </div>
-        </section>
+            </section>
+        </div>
     </div>
-</div>

@@ -5,16 +5,15 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using Trail4Healthtest.Data;
 using Trail4Healthtest.Models;
 
 namespace Trail4Healthtest.Controllers
 {
     public class TrilhoesController : Controller
     {
-        private readonly TrailsDbContext _context;
+        private readonly Trails4HealthContext _context;
 
-        public TrilhoesController(TrailsDbContext context)
+        public TrilhoesController(Trails4HealthContext context)
         {
             _context = context;
         }
@@ -22,7 +21,8 @@ namespace Trail4Healthtest.Controllers
         // GET: Trilhoes
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Trilho.ToListAsync());
+            var trails4HealthContext = _context.Trilho.Include(t => t.CoddesnivelNavigation).Include(t => t.CoddificuldadeNavigation).Include(t => t.CodepocaaconselhdaNavigation);
+            return View(await trails4HealthContext.ToListAsync());
         }
 
         // GET: Trilhoes/Details/5
@@ -34,7 +34,10 @@ namespace Trail4Healthtest.Controllers
             }
 
             var trilho = await _context.Trilho
-                .SingleOrDefaultAsync(m => m.trilhoId == id);
+                .Include(t => t.CoddesnivelNavigation)
+                .Include(t => t.CoddificuldadeNavigation)
+                .Include(t => t.CodepocaaconselhdaNavigation)
+                .SingleOrDefaultAsync(m => m.TrilhoId == id);
             if (trilho == null)
             {
                 return NotFound();
@@ -46,6 +49,9 @@ namespace Trail4Healthtest.Controllers
         // GET: Trilhoes/Create
         public IActionResult Create()
         {
+            ViewData["Coddesnivel"] = new SelectList(_context.Desnivel, "DesnivelId", "Nomedesnivel");
+            ViewData["Coddificuldade"] = new SelectList(_context.Dificuldade, "DificuldadeId", "Nomedificuldade");
+            ViewData["Codepocaaconselhda"] = new SelectList(_context.EpocaAconcelhada, "EpocaId", "Nomeepoca");
             return View();
         }
 
@@ -54,7 +60,7 @@ namespace Trail4Healthtest.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("trilhoId,distancia_a_percorrer,duracao_media,loc_inicio,loc_fim,cod_dificuldade,cod_desnivel,cod_etapa_aconselhada,ativo")] Trilho trilho)
+        public async Task<IActionResult> Create([Bind("TrilhoId,Ativo,Coddesnivel,Coddificuldade,Codepocaaconselhda,Distanciaapercorrer,Duracaomedia,Locfim,Locinicio,NewsletterAtiva,Nometrilho")] Trilho trilho)
         {
             if (ModelState.IsValid)
             {
@@ -62,6 +68,9 @@ namespace Trail4Healthtest.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["Coddesnivel"] = new SelectList(_context.Desnivel, "DesnivelId", "Nomedesnivel", trilho.Coddesnivel);
+            ViewData["Coddificuldade"] = new SelectList(_context.Dificuldade, "DificuldadeId", "Nomedificuldade", trilho.Coddificuldade);
+            ViewData["Codepocaaconselhda"] = new SelectList(_context.EpocaAconcelhada, "EpocaId", "Nomeepoca", trilho.Codepocaaconselhda);
             return View(trilho);
         }
 
@@ -73,11 +82,14 @@ namespace Trail4Healthtest.Controllers
                 return NotFound();
             }
 
-            var trilho = await _context.Trilho.SingleOrDefaultAsync(m => m.trilhoId == id);
+            var trilho = await _context.Trilho.SingleOrDefaultAsync(m => m.TrilhoId == id);
             if (trilho == null)
             {
                 return NotFound();
             }
+            ViewData["Coddesnivel"] = new SelectList(_context.Desnivel, "DesnivelId", "Nomedesnivel", trilho.Coddesnivel);
+            ViewData["Coddificuldade"] = new SelectList(_context.Dificuldade, "DificuldadeId", "Nomedificuldade", trilho.Coddificuldade);
+            ViewData["Codepocaaconselhda"] = new SelectList(_context.EpocaAconcelhada, "EpocaId", "Nomeepoca", trilho.Codepocaaconselhda);
             return View(trilho);
         }
 
@@ -86,9 +98,9 @@ namespace Trail4Healthtest.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("trilhoId,distancia_a_percorrer,duracao_media,loc_inicio,loc_fim,cod_dificuldade,cod_desnivel,cod_etapa_aconselhada,ativo")] Trilho trilho)
+        public async Task<IActionResult> Edit(int id, [Bind("TrilhoId,Ativo,Coddesnivel,Coddificuldade,Codepocaaconselhda,Distanciaapercorrer,Duracaomedia,Locfim,Locinicio,NewsletterAtiva,Nometrilho")] Trilho trilho)
         {
-            if (id != trilho.trilhoId)
+            if (id != trilho.TrilhoId)
             {
                 return NotFound();
             }
@@ -102,7 +114,7 @@ namespace Trail4Healthtest.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!TrilhoExists(trilho.trilhoId))
+                    if (!TrilhoExists(trilho.TrilhoId))
                     {
                         return NotFound();
                     }
@@ -113,6 +125,9 @@ namespace Trail4Healthtest.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["Coddesnivel"] = new SelectList(_context.Desnivel, "DesnivelId", "Nomedesnivel", trilho.Coddesnivel);
+            ViewData["Coddificuldade"] = new SelectList(_context.Dificuldade, "DificuldadeId", "Nomedificuldade", trilho.Coddificuldade);
+            ViewData["Codepocaaconselhda"] = new SelectList(_context.EpocaAconcelhada, "EpocaId", "Nomeepoca", trilho.Codepocaaconselhda);
             return View(trilho);
         }
 
@@ -125,7 +140,10 @@ namespace Trail4Healthtest.Controllers
             }
 
             var trilho = await _context.Trilho
-                .SingleOrDefaultAsync(m => m.trilhoId == id);
+                .Include(t => t.CoddesnivelNavigation)
+                .Include(t => t.CoddificuldadeNavigation)
+                .Include(t => t.CodepocaaconselhdaNavigation)
+                .SingleOrDefaultAsync(m => m.TrilhoId == id);
             if (trilho == null)
             {
                 return NotFound();
@@ -139,7 +157,7 @@ namespace Trail4Healthtest.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var trilho = await _context.Trilho.SingleOrDefaultAsync(m => m.trilhoId == id);
+            var trilho = await _context.Trilho.SingleOrDefaultAsync(m => m.TrilhoId == id);
             _context.Trilho.Remove(trilho);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
@@ -147,7 +165,7 @@ namespace Trail4Healthtest.Controllers
 
         private bool TrilhoExists(int id)
         {
-            return _context.Trilho.Any(e => e.trilhoId == id);
+            return _context.Trilho.Any(e => e.TrilhoId == id);
         }
     }
 }

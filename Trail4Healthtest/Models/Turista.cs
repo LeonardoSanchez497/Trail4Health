@@ -1,17 +1,25 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Trail4Healthtest.Models
 {
-    public class Turista
+    public partial class Turista
     {
-        public int turistaId { get; set; } //Pk
-        public string nome { get; set; }
-        public string numeroTelefone { get; set; }
-        public int nif { get; set; }
-        public string email { get; set; }
-        public string contato_emergencia { get; set; }
+        public Turista()
+        {
+            AgendaTuristaTrilho = new HashSet<AgendaTuristaTrilho>();
+            Comentarios = new HashSet<Comentarios>();
+        }
+
+        public int TuristaId { get; set; }
+        public string Contatoemergencia { get; set; }
+        public string Email { get; set; }
+        public int Nif { get; set; }
+        public string Nome { get; set; }
+        public string NumeroTelefone { get; set; }
+        public bool EstadoTurista { get; set; }
+
+        public ICollection<AgendaTuristaTrilho> AgendaTuristaTrilho { get; set; }
+        public ICollection<Comentarios> Comentarios { get; set; }
     }
 }

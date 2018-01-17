@@ -3,13 +3,14 @@
 @{
     ViewData["Title"] = "Index";
 }
+
 <div class="bread_area">
     <div class="container">
         <div class="row">
             <div class="col-sm-12">
                 <ol class="breadcrumb">
                     <li><a href="/">Trail4Health</a></li>
-                    <li class="active">Consultar turistas</li>
+                    <li class="active">Todos os turistas</li>
                 </ol>
             </div>
         </div>
@@ -18,29 +19,28 @@
 <div class="container">
     <div class="row">
         <section class="page col-sm-12">
-            <h2 class="page-title">Consultar turistas</h2>
             <div class="row">
-                <div class="col-lg-12">
-                    <p>
-                        <button class="btn btn-default"><a asp-action="Create">Novo turista</a></button>
-                    </p>
-                    <table class="table">
+                    <table class="table table-condensed">
                         <thead>
                             <tr>
                                 <th>
-                                   Nome
+                                    @Html.DisplayNameFor(model => model.Nome)
                                 </th>
                                 <th>
-                                   Número de Telefone
-                                </th>
-                                <th>
-                                    NIF
+                                   Contato de Emergência
                                 </th>
                                 <th>
                                    Email
                                 </th>
                                 <th>
-                                    Contato de Emergência
+                                    NIF
+                                </th>
+
+                                <th>
+                                   Nº de Telefone
+                                </th>
+                                <th>
+                                    Estado da conta. Desativa?
                                 </th>
                                 <th></th>
                             </tr>
@@ -48,33 +48,39 @@
                         <tbody>
                             @foreach (var item in Model)
                             {
-                                <tr>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.nome)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.numeroTelefone)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.nif)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.email)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.contato_emergencia)
-                                    </td>
-                                    <td>
-                                        <a asp-action="Edit" asp-route-id="@item.turistaId">Editar</a> |
-                                        <a asp-action="Details" asp-route-id="@item.turistaId">Ver mais detalhes</a> |
-                                        <a asp-action="Delete" asp-route-id="@item.turistaId">Apagar</a>
-                                    </td>
-                                </tr>
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Nome)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Contatoemergencia)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Email)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Nif)
+                                </td>
+
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.NumeroTelefone)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.EstadoTurista)
+                                </td>
+                                <td>
+                                    <button class="btn btn-toolbar">
+                                        <a asp-action="Edit" asp-route-id="@item.TuristaId">Editar</a>
+                                    </button> |
+                                    <button class="btn btn-default">
+                                        <a asp-action="Details" asp-route-id="@item.TuristaId">Detalhes</a>
+                                    </button>
+                                </td>
+                            </tr>
                             }
                         </tbody>
                     </table>
                 </div>
-            </div>
-        </section>
+            </section>
+        </div>
     </div>
-</div>

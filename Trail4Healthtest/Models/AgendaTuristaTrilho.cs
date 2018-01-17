@@ -1,18 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Trail4Healthtest.Models
 {
-    public class AgendaTuristaTrilho
+    public partial class AgendaTuristaTrilho
     {
-        public int trilhoId { get; set; } //pk
-        public int turistaId { get; set; } //pk
-        public DateTime data_inicio { get; set; }
-        public DateTime data_fim { get; set; }
-        public string tempo_gasto { get; set; }
-        public string estado_agendado { get; set; }
+        public int AgendaId { get; set; }
+        public DateTime? Datafim { get; set; }
+        public DateTime? Datainicio { get; set; } 
+        public string Tempogasto { get; set; }
+        public int Trilhoid { get; set; }
+        public int Turistaid { get; set; }
 
+        public Trilho Trilho { get; set; }
+        public Turista Turista { get; set; }
     }
 }

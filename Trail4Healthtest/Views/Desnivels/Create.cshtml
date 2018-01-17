@@ -1,0 +1,49 @@
+﻿@model Trail4Healthtest.Models.Desnivel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+
+<div class="bread_area">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <ol class="breadcrumb">
+                    <li><a href="/">Trail4Health</a></li>
+                    <li class="active">Criar Desnível</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <section class="page col-sm-12">
+            <div class="row">
+                <div class="col-lg-12">
+                    <form asp-action="Create">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <div class="form-group">
+                            <label asp-for="Nomedesnivel" class="control-label">Nome que quer dar ao Desnível</label>
+                            <input asp-for="Nomedesnivel" class="form-control" />
+                            <span asp-validation-for="Nomedesnivel" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Observacoes" class="control-label">Observações</label>
+                            <input asp-for="Observacoes" class="form-control" />
+                            <span asp-validation-for="Observacoes" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" value="Inserir" class="btn btn-success" /> | <button class="btn btn-info"><a asp-action="Index">Voltar à lista</a></button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            </section>
+        </div>
+    </div>
+
+            @section Scripts {
+                @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+            }

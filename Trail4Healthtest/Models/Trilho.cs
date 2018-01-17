@@ -1,20 +1,38 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Trail4Healthtest.Models
 {
-    public class Trilho
+    public partial class Trilho
     {
-        public int trilhoId { get; set; } //PK
-        public string distancia_a_percorrer { get; set; }
-        public string duracao_media { get; set; }
-        public string loc_inicio { get; set; }
-        public string loc_fim { get; set; }
-        public int cod_dificuldade { get; set; } //FK
-        public int cod_desnivel { get; set; } //FK
-        public int cod_etapa_aconselhada { get; set; } //FK
-        public int ativo { get; set; } //FK
+        public Trilho()
+        {
+            AgendaTuristaTrilho = new HashSet<AgendaTuristaTrilho>();
+            Comentarios = new HashSet<Comentarios>();
+            EstadoTrilho = new HashSet<EstadoTrilho>();
+            EtapaTrilho = new HashSet<EtapaTrilho>();
+            Newsletter = new HashSet<Newsletter>();
+        }
+
+        public int TrilhoId { get; set; }
+        public bool Ativo { get; set; }
+        public int Coddesnivel { get; set; }
+        public int Coddificuldade { get; set; }
+        public int Codepocaaconselhda { get; set; }
+        public string Distanciaapercorrer { get; set; }
+        public string Duracaomedia { get; set; }
+        public string Locfim { get; set; }
+        public string Locinicio { get; set; }
+        public bool NewsletterAtiva { get; set; }
+        public string Nometrilho { get; set; }
+
+        public Desnivel CoddesnivelNavigation { get; set; }
+        public Dificuldade CoddificuldadeNavigation { get; set; }
+        public EpocaAconcelhada CodepocaaconselhdaNavigation { get; set; }
+        public ICollection<AgendaTuristaTrilho> AgendaTuristaTrilho { get; set; }
+        public ICollection<Comentarios> Comentarios { get; set; }
+        public ICollection<EstadoTrilho> EstadoTrilho { get; set; }
+        public ICollection<EtapaTrilho> EtapaTrilho { get; set; }
+        public ICollection<Newsletter> Newsletter { get; set; }
     }
 }

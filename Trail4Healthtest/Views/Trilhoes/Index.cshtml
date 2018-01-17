@@ -4,14 +4,13 @@
     ViewData["Title"] = "Index";
 }
 
-
 <div class="bread_area">
     <div class="container">
         <div class="row">
             <div class="col-sm-12">
                 <ol class="breadcrumb">
                     <li><a href="/">Trail4Health</a></li>
-                    <li class="active">Consultar trails</li>
+                    <li class="active">Todos os trilhos</li>
                 </ol>
             </div>
         </div>
@@ -20,38 +19,33 @@
 <div class="container">
     <div class="row">
         <section class="page col-sm-12">
-            <h2 class="page-title">Consultar trails</h2>
             <div class="row">
                 <div class="col-lg-12">
-                    <p>
-                        <button class="btn btn-default"><a asp-action="Create">Novo trilho</a></button>
-                    </p>
-                    <table class="table">
+                    <button class="btn btn-info">
+                        <a asp-action="Create">Criar Novo Trilho</a>
+                    </button>
+                    <br />
+                    <br />
+                    <table class="table table-condensed">
                         <thead>
                             <tr>
+                                <th>
+                                    Nome do trilho
+                                </th>
                                 <th>
                                     Distância a percorrer
                                 </th>
                                 <th>
-                                    Duração Média
-                                </th>
-                                <th>
-                                    Local de início
+                                    Duração média
                                 </th>
                                 <th>
                                     Local de fim
                                 </th>
                                 <th>
-                                   Nível de dificuldade
+                                    Local de Início
                                 </th>
                                 <th>
-                                    Desnível
-                                </th>
-                                <th>
-                                    Etapa aconselhada
-                                </th>
-                                <th>
-                                    Ativo
+                                    Ativo?
                                 </th>
                                 <th></th>
                             </tr>
@@ -59,42 +53,42 @@
                         <tbody>
                             @foreach (var item in Model)
                             {
-                                <tr>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.distancia_a_percorrer)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.duracao_media)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.loc_inicio)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.loc_fim)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.cod_dificuldade)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.cod_desnivel)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.cod_etapa_aconselhada)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.ativo)
-                                    </td>
-                                    <td>
-                                        <a asp-action="Edit" asp-route-id="@item.trilhoId">Editar</a> |
-                                        <a asp-action="Details" asp-route-id="@item.trilhoId">Ver mais detalhes</a> |
-                                        <a asp-action="Delete" asp-route-id="@item.trilhoId">Apagar</a>
-                                    </td>
-                                </tr>
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Nometrilho)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Distanciaapercorrer)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Duracaomedia)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Locfim)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Locinicio)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Ativo)
+                                </td>
+                                <td>
+                                    <button class="btn btn-toolbar">
+                                        <a asp-action="Edit" asp-route-id="@item.TrilhoId">Editar</a>
+                                    </button> |
+                                    <button class="btn btn-default">
+                                        <a asp-action="Details" asp-route-id="@item.TrilhoId">Detalhes</a>
+                                    </button> |
+                                    <button class="btn btn-danger">
+                                        <a asp-action="Delete" asp-route-id="@item.TrilhoId">Apagar</a>
+                                    </button>
+                                </td>
+                            </tr>
                             }
                         </tbody>
                     </table>
+                    </div>
                 </div>
-            </div>
-        </section>
+            </section>
+        </div>
     </div>
-</div>

@@ -1,0 +1,87 @@
+﻿@model IEnumerable<Trail4Healthtest.Models.AgendaTuristaTrilho>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<div class="bread_area">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <ol class="breadcrumb">
+                    <li><a href="/">Trail4Health</a></li>
+                    <li class="active">Agenda</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <section class="page col-sm-12">
+            <div class="row">
+                <div class="col-lg-12">
+                    <button class="btn btn-info">
+                        <a asp-action="Create">Criar Novo Estado</a>
+                    </button>
+                    <br />
+                    <br />
+                    <table class="table table-condensed">
+                        <thead>
+                            <tr>
+                                <th>
+                                    Data Início
+                                </th>
+                                <th>
+                                    Data Fim
+                                </th>
+                                <th>
+                                    Tempo gasto
+                                </th>
+                                <th>
+                                    Nome Trilho
+                                </th>
+                                <th>
+                                    Nome Turista
+                                </th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Datafim)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Datainicio)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Tempogasto)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Trilho.Nometrilho)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Turista.Nome)
+                    </td>
+                    <td>
+                        <button class="btn btn-toolbar">
+                            <a asp-action="Edit" asp-route-id="@item.AgendaId">Editar</a>
+                        </button> |
+                        <button class="btn btn-default">
+                            <a asp-action="Details" asp-route-id="@item.AgendaId">Detalhes</a>
+                        </button> |
+                        <button class="btn btn-danger">
+                            <a asp-action="Delete" asp-route-id="@item.AgendaId">Apagar</a>
+                        </button>
+                    </td>
+                </tr>
+}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>

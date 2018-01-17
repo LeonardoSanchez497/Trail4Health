@@ -1,4 +1,5 @@
 ﻿@inject Microsoft.ApplicationInsights.AspNetCore.JavaScriptSnippet JavaScriptSnippet
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -24,40 +25,73 @@
                     <span class="sr-only">Toggle Navigation</span>
                     <i class="fa fa-bars"></i>
                 </button>
-                <a  class="navbar-brand" asp-controller="Home" asp-action="Index">
+                <a class="navbar-brand" asp-controller="Home" asp-action="Index">
                     <img src="~/img/logo.png" alt="Post">
                 </a>
+
                 <div class="collapse navbar-collapse" id="bs-navbar-collapse">
                     <ul class="nav navbar-nav main-navbar-nav">
                         <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
-                        <li class="dropdown">
-                            <a href="#" title="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Turista<span class="caret"></span></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="~/Turistas/Create" title="">Novo Turista</a></li>
-                                <li><a href="~/Turistas" title="">Consultar Turista</a></li>
-                                @*<li><a href="#" title="">SUB MENU 3</a></li>*@
-                            </ul>
-                        </li>
-                        <li class="dropdown">
-                            <a href="#" title="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Trails<span class="caret"></span></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="~/Trilhoes/Create" title="">Novo Trail</a></li>
-                                <li><a href="~/Trilhoes/" title="">Consultar Trails</a></li>
-                                <li><a href="~/Comentarios/Create">Comentar Trails</a></li>
-                                @*<li><a href="#" title="">SUB MENU 3</a></li>*@
-                            </ul>
-                        </li>
+                        @if (this.User.IsInRole("Administrador"))
+                        {
+                            <li class="dropdown">
+                                <a href="#" title="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Administrador<span class="caret"></span></a>
+                                @* ADMINISTRADOR *@
+                                <ul class="dropdown-menu">
+                                    <li><a tabindex="-1" href="~/Avaliacaos/Create" title="">Criar tipos de avaliação para trilhos </a></li>
+                                    <li><a tabindex="-1" href="~/Avaliacaos" title="">Consultar tipos avaliações para trilhos</a></li>
+                                    <li><a tabindex="-1" href="~/Desnivels/Create" title="">Criar tipos de inclinação para os trilhos</a></li>
+                                    <li><a tabindex="-1" href="~/Dificuldades/Create" title="">Criar níveis de dificuldade para os trilhos</a></li>
+                                    <li><a tabindex="-1" href="~/EpocaAconcelhadas/Create" title="">Criar tipos de épocas aconselhadas</a></li>
+                                    <li><a tabindex="-1" href="~/Estadoes/Create" title="">Criar novo estado para o trilho</a></li>
+                                    <li><a tabindex="-1" href="~/Estadoes" title="">Consultar estados para o trilho</a></li>
+                                    <li><a tabindex="-1" href="~/EstadoTrilhoes/Create" title="">Criar estado para identificar como está o trilho</a></li>
+                                    <li><a tabindex="-1" href="~/Etapas/Create" title="">Criar novas etapas</a></li>
+                                    <li><a tabindex="-1" href="~/Etapas" title="">Consultar etapas</a></li>
+                                    <li><a tabindex="-1" href="~/EtapaTrilhoes/Create" title="">Criar nova etapa dos trilhos</a></li>
+                                    <li><a tabindex="-1" href="~/Newsletters/Create" title="">Criar nova Newsletter</a></li>
+                                    <li><a tabindex="-1" href="~/Trilhoes/Create" title="">Criar novo Trilho</a></li>
+                                    <li><a tabindex="-1" href="~/Turistas/" title="">Consultar Turistas</a></li>
+                                    @*<li><a href="#" title="">SUB MENU 3</a></li>*@
+                                </ul>
+                            </li>
+                        }
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <li class="dropdown">
+                                <a href="#" title="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Aventureiro<span class="caret"></span></a>
+                                @* ADMINISTRADOR *@
+                                <ul class="dropdown-menu">
+                                    <li><a href="~/Desnivels" title="">Consultar Inclinações</a></li>
+                                    <li><a href="~/Dificuldades" title="">Consultar níveis de dificuldade dos trilhos</a></li>
+                                    <li><a href="~/EpocaAconcelhadas" title="">Consultar épocas aconselhadas para realização dos trilhos</a></li>
+                                    <li><a href="~/EstadoTrilhoes" title="">Consultar o estado dos trilhos</a></li>
+                                    <li><a href="~/EtapaTrilhoes" title="">Consultar as etapas dos trilhos</a></li>
+                                    <li><a href="~/Newsletters" title="">Consultar newsletters</a></li>
+                                    <li><a href="~/Trilhoes" title="">Consultar trilhos</a></li>
+                                    <li><a href="~/Comentarios/Create">Comentar trilho</a></li>
+                                </ul>
+                            </li>
+
+                            <li class="dropdown">
+                                <a href="#" title="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Agendar novo passeio<span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="~/AgendaTuristaTrilhoes/Create" title="">Criar nova marcação para fazer trilho</a></li>
+                                    <li><a href="~/AgendaTuristaTrilhoes/" title="">Consultar a agenda</a></li>
+                                    @*<li><a href="#" title="">SUB MENU 3</a></li>*@
+                                </ul>
+                            </li>
+                        }
                         <li><a asp-area="" asp-controller="Home" asp-action="About">Sobre</a></li>
-                        <li><a asp-area="" asp-controller="Home" asp-action="">Login</a></li>
+                        <li>@await Html.PartialAsync("_LoginPartial")</li>
 
                     </ul>
-		    @await Html.PartialAsync("_LoginPartial")
                 </div><!-- /.navbar-collapse -->
                 <!-- END MAIN NAVIGATION -->
             </div>
         </nav>
     </header>
-    <main class="site-main page-main">
+    <main class="site-main page-main" style="position: relative;min-height:75%;">
         @RenderBody()
     </main>
     <footer class="site-footer">

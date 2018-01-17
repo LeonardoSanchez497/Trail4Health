@@ -10,7 +10,7 @@
             <div class="col-sm-12">
                 <ol class="breadcrumb">
                     <li><a href="/">Trail4Health</a></li>
-                    <li class="active">Consultar comentários</li>
+                    <li class="active">Todos os Comentários</li>
                 </ol>
             </div>
         </div>
@@ -19,64 +19,71 @@
 <div class="container">
     <div class="row">
         <section class="page col-sm-12">
-            <h2 class="page-title">Consultar comentários</h2>
             <div class="row">
                 <div class="col-lg-12">
-                    <p>
-                        <button class="btn btn-default"><a asp-action="Create">Novo comentário sobre o trilho</a></button>
-                    </p>
-                    <table class="table">
+                    <button class="btn btn-info">
+                        <a asp-action="Create">Criar Novo Estado</a>
+                    </button>
+                    <br />
+                    <br />
+                    <table class="table table-condensed">
                         <thead>
                             <tr>
                                 <th>
-                                    Id do Trilho
+                                    Comentários
                                 </th>
                                 <th>
                                     Duração do Trilho
                                 </th>
                                 <th>
-                                    Avaliação do Trilho
+                                    Avaliação
                                 </th>
                                 <th>
-                                    Comentário
+                                    Trilho
                                 </th>
                                 <th>
-                                    Turista que completou o Trilho
+                                    Turista
                                 </th>
                                 <th></th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach (var item in Model)
-                            {
-                                <tr>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.trilhoId) 
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.duracaoTrilho)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.avaliacao)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.comentar)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.turista.turistaId)
-                                    </td>
-                                    <td>
-                                        <a asp-action="Edit" asp-route-id="@item.comentarioId">Editar</a> |
-                                        <a asp-action="Details" asp-route-id="@item.comentarioId">Ver mais detalhes</a> |
-                                        <a asp-action="Delete" asp-route-id="@item.comentarioId">Apagar</a>
-                                    </td>
-                                </tr>
-                            }
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Comentar)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DuracaoTrilho)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Avaliacao.AvaliacaoId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Trilho.Nometrilho)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Turista.Nome)
+                    </td>
+                    <td>
+                        <button class="btn btn-toolbar">
+                            <a asp-action="Edit" asp-route-id="@item.ComentarioId">Editar</a>
+                        </button> |
+                        <button class="btn btn-default">
+                            <a asp-action="Details" asp-route-id="@item.ComentarioId">Detalhes</a>
+                        </button> |
+                        <button class="btn btn-danger">
+                            <a asp-action="Delete" asp-route-id="@item.ComentarioId">Apagar</a>
+                        </button>
+                    </td>
+                </tr>
+}
                         </tbody>
                     </table>
                 </div>
             </div>
         </section>
-        </div>
+    </div>
 </div>
 

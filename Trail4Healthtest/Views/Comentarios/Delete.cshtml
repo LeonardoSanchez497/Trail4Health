@@ -10,7 +10,7 @@
             <div class="col-sm-12">
                 <ol class="breadcrumb">
                     <li><a href="/">Trail4Health</a></li>
-                    <li class="active">Apagar Comentário</li>
+                    <li class="active">Apagar comentário do trilho</li>
                 </ol>
             </div>
         </div>
@@ -19,43 +19,54 @@
 <div class="container">
     <div class="row">
         <section class="page col-sm-12">
-            <h2 class="page-title">Apagar Comentário</h2>
             <div class="row">
-                <div class="col-lg-10">
-                    <dl class="dl-horizontal">
-                        <dt>
-                          Id do trilho
-                        </dt>
-                        <dd>
-                            @Html.DisplayFor(model => model.trilhoId)
-                        </dd>
-                        <dt>
-                            Duração trilho
-                        </dt>
-                        <dd>
-                            @Html.DisplayFor(model => model.duracaoTrilho)
-                        </dd>
-                        <dt>
-                           Avaliação
-                        </dt>
-                        <dd>
-                            @Html.DisplayFor(model => model.avaliacao)
-                        </dd>
-                        <dt>
-                           Turista
-                        </dt>
-                        <dd>
-                            @Html.DisplayFor(model => model.turista.turistaId)
-                        </dd>
-                    </dl>
+                <div class="col-lg-12">
+                    <h3>Tem a certeza que pretende apagar este registo?</h3>
+                    <div>
+                        <hr />
+                        <dl class="dl-horizontal">
+                            <dt>
+                                Comentário
+                            </dt>
+                            <dd>
+                                @Html.DisplayFor(model => model.Comentar)
+                            </dd>
+                            <dt>
+                                Duração do Trilho
+                            </dt>
+                            <dd>
+                                @Html.DisplayFor(model => model.DuracaoTrilho)
+                            </dd>
+                            <dt>
+                                Avaliação
+                            </dt>
+                            <dd>
+                                @Html.DisplayFor(model => model.Avaliacao.Classificacao)
+                            </dd>
+                            <dt>
+                                Nome Trilho
+                            </dt>
+                            <dd>
+                                @Html.DisplayFor(model => model.Trilho.Nometrilho)
+                            </dd>
+                            <dt>
+                                Turista
+                            </dt>
+                            <dd>
+                                @Html.DisplayFor(model => model.Turista.Nome)
+                            </dd>
+                        </dl>
 
-                    <form asp-action="Delete">
-                        <input type="hidden" asp-for="comentarioId" />
-                        <input type="submit" value="Delete" class="btn btn-default" /> |
-                        <button class="btn btn-default">
-                            <a asp-action="Index">Volta à Lista</a>
-                        </button>
-                    </form>
+                        <form asp-action="Delete">
+                            <input type="hidden" asp-for="ComentarioId" />
+
+                            <input type="submit" value="Apagar" class="btn btn-danger" />
+                            | <button class="btn btn-info">
+                                <a asp-action="Index">Voltar à lista</a>
+                            </button>
+                        </form>
+
+                    </div>
                 </div>
             </div>
         </section>

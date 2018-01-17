@@ -1,13 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Trail4Healthtest.Models
 {
-    public class Estado
+    public partial class Estado
     {
-        public int estadoId { get; set; } //PK
-        public string nome_estado { get; set; }
+        public Estado()
+        {
+            EstadoTrilho = new HashSet<EstadoTrilho>();
+        }
+
+        public int EstadoId { get; set; }
+        public string Nomeestado { get; set; }
+
+        public ICollection<EstadoTrilho> EstadoTrilho { get; set; }
     }
 }

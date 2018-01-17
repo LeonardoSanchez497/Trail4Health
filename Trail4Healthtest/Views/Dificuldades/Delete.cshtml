@@ -1,0 +1,54 @@
+﻿@model Trail4Healthtest.Models.Dificuldade
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<div class="bread_area">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <ol class="breadcrumb">
+                    <li><a href="/">Trail4Health</a></li>
+                    <li class="active">Comentar trilho</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <section class="page col-sm-12">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h3>Tem a certeza que pretende apagar este registo?</h3>
+                    <div>
+                        <hr />
+                        <dl class="dl-horizontal">
+                            <dt>
+                                Nome da dificuldade
+                            </dt>
+                            <dd>
+                                @Html.DisplayFor(model => model.Nomedificuldade)
+                            </dd>
+                            <dt>
+                                Observações
+                            </dt>
+                            <dd>
+                                @Html.DisplayFor(model => model.Observacoes)
+                            </dd>
+                        </dl>
+
+                        <form asp-action="Delete">
+                            <input type="hidden" asp-for="DificuldadeId" />
+                            <input type="submit" value="Apagar" class="btn btn-danger" />
+                            | <button class="btn btn-info">
+                                <a asp-action="Index">Voltar à lista</a>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>

@@ -3,14 +3,13 @@
 @{
     ViewData["Title"] = "Details";
 }
-
 <div class="bread_area">
     <div class="container">
         <div class="row">
             <div class="col-sm-12">
                 <ol class="breadcrumb">
                     <li><a href="/">Trail4Health</a></li>
-                    <li class="active">Detalhes do turista</li>
+                    <li class="active">Detalhes turista</li>
                 </ol>
             </div>
         </div>
@@ -19,48 +18,60 @@
 <div class="container">
     <div class="row">
         <section class="page col-sm-12">
-            <h2 class="page-title">Detalhes Turista</h2>
             <div class="row">
-                <div class="col-lg-10">
+                <div class="col-lg-12">
                     <dl class="dl-horizontal">
                         <dt>
                             Nome
                         </dt>
                         <dd>
-                            @Html.DisplayFor(model => model.nome)
-                        </dd>
-                        <dt>
-                            Número de Telefone
-                        </dt>
-                        <dd>
-                            @Html.DisplayFor(model => model.numeroTelefone)
-                        </dd>
-                        <dt>
-                            NIF
-                        </dt>
-                        <dd>
-                            @Html.DisplayFor(model => model.nif)
-                        </dd>
-                        <dt>
-                            Email
-                        </dt>
-                        <dd>
-                            @Html.DisplayFor(model => model.email)
+                            @Html.DisplayFor(model => model.Nome)
                         </dd>
                         <dt>
                             Contato de Emergência
                         </dt>
                         <dd>
-                            @Html.DisplayFor(model => model.contato_emergencia)
+                            @Html.DisplayFor(model => model.Contatoemergencia)
+                        </dd>
+                        <dt>
+                            Email
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.Email)
+                        </dd>
+                        <dt>
+                            NIF
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.Nif)
+                        </dd>
+
+                        <dt>
+                            Nº de Telefone
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.NumeroTelefone)
+                        </dd>
+                        <dt>
+                            Conta Desativa?
+                        </dt>
+                        <dd>
+                            @if (@Html.DisplayTextFor(model => model.EstadoTurista) == "True")
+                            {
+                                <text>Sim</text>
+
+                            }
+                            else if (@Html.DisplayTextFor(model => model.EstadoTurista) == "False")
+                            {
+                                <text>Não</text>
+                            }
+
                         </dd>
                     </dl>
                 </div>
-                <div>
-                    <button class="btn btn-info">
-                        <a asp-action="Edit" asp-route-id="@Model.turistaId">Editar</a>
-                    </button> |
-                    <button class="btn btn-default"><a asp-action="Index">Voltar à lista</a></button>
-                </div>
+            </div>
+            <div class="form-group">
+                <button class="btn btn-toolbar"><a asp-action="Edit" asp-route-id="@Model.TuristaId">Editar</a></button> | <button class="btn btn-info"><a asp-action="Index">Voltar à lista</a></button>
             </div>
         </section>
     </div>

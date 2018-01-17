@@ -495,7 +495,7 @@ namespace Trail4Healthtest.Controllers
         {
             return string.Format(
                 AuthenicatorUriFormat,
-                _urlEncoder.Encode("Trail4Healthtest"),
+                _urlEncoder.Encode("Train4Health"),
                 _urlEncoder.Encode(email),
                 unformattedKey);
         }

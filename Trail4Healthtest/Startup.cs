@@ -27,7 +27,9 @@ namespace Trail4Healthtest
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("Trail4HealthLogin")));
+                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddDbContext<ApplicationDbContext>(options =>
+                options.UseSqlServer(Configuration.GetConnectionString("ConnectionStringTrails")));
 
             services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
@@ -37,13 +39,21 @@ namespace Trail4Healthtest
             services.AddTransient<IEmailSender, EmailSender>();
 
             services.AddMvc();
-            services.AddDbContext<TrailsDbContext>(options =>
-            options.UseSqlServer(Configuration.GetConnectionString("ConnectionStringTrails")));
+
+            services.AddDbContext<Trails4HealthContext>();
+            services.AddScoped<DbContext>(sp => sp.GetService<Trails4HealthContext>());
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, UserManager<ApplicationUser> userManager, RoleManager<IdentityRole> roleManager)
         {
+            using (var serviceScope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>().CreateScope())
+            {
+                var context = serviceScope.ServiceProvider.GetService<Trails4HealthContext>();               
+                SeedData.SeedCountries(context).Wait();
+
+            }
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -55,9 +65,12 @@ namespace Trail4Healthtest
                 app.UseExceptionHandler("/Home/Error");
             }
 
+            
             app.UseStaticFiles();
 
             app.UseAuthentication();
+
+            SeedUsers.SeedData(userManager, roleManager);
 
             app.UseMvc(routes =>
             {
@@ -65,6 +78,8 @@ namespace Trail4Healthtest
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
+
+
         }
     }
 }

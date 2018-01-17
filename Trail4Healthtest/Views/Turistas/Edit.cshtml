@@ -3,7 +3,6 @@
 @{
     ViewData["Title"] = "Edit";
 }
-
 <div class="bread_area">
     <div class="container">
         <div class="row">
@@ -19,48 +18,53 @@
 <div class="container">
     <div class="row">
         <section class="page col-sm-12">
-            <h2 class="page-title">Editar turista</h2>
             <div class="row">
-                <div class="col-lg-10">
+                <div class="col-lg-12">
                     <form asp-action="Edit">
                         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                        <input type="hidden" asp-for="turistaId" />
+                        <input type="hidden" asp-for="TuristaId" />
                         <div class="form-group">
-                            <label asp-for="nome" class="control-label">Nome</label>
-                            <input asp-for="nome" class="form-control" />
-                            <span asp-validation-for="nome" class="text-danger"></span>
+                            <label asp-for="Nome" class="control-label"></label>
+                            <input asp-for="Nome" class="form-control" />
+                            <span asp-validation-for="Nome" class="text-danger"></span>
                         </div>
                         <div class="form-group">
-                            <label asp-for="numeroTelefone" class="control-label">Número de Telefone</label>
-                            <input asp-for="numeroTelefone" class="form-control" />
-                            <span asp-validation-for="numeroTelefone" class="text-danger"></span>
+                            <label asp-for="Contatoemergencia" class="control-label">Contato de Emergência</label>
+                            <input asp-for="Contatoemergencia" class="form-control" />
+                            <span asp-validation-for="Contatoemergencia" class="text-danger"></span>
                         </div>
                         <div class="form-group">
-                            <label asp-for="nif" class="control-label">NIF</label>
-                            <input asp-for="nif" class="form-control" />
-                            <span asp-validation-for="nif" class="text-danger"></span>
+                            <label asp-for="Email" class="control-label">Email</label>
+                            <input readonly asp-for="Email" class="form-control" />
+                            <span asp-validation-for="Email" class="text-danger"></span>
                         </div>
                         <div class="form-group">
-                            <label asp-for="email" class="control-label">Email</label>
-                            <input asp-for="email" class="form-control" />
-                            <span asp-validation-for="email" class="text-danger"></span>
+                            <label asp-for="Nif" class="control-label">NIF</label>
+                            <input readonly asp-for="Nif" class="form-control" />
+                            <span asp-validation-for="Nif" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="NumeroTelefone" class="control-label">Nº de Telefone</label>
+                            <input asp-for="NumeroTelefone" class="form-control" />
+                            <span asp-validation-for="NumeroTelefone" class="text-danger"></span>
                         </div>
                         <div class="form-group">
-                            <label asp-for="contato_emergencia" class="control-label">Contato de Emergência</label>
-                            <input asp-for="contato_emergencia" class="form-control" />
-                            <span asp-validation-for="contato_emergencia" class="text-danger"></span>
+                            <label asp-for="EstadoTurista" class="control-label">Desativar Turista?</label>&nbsp;
+                            <label>
+                                <input asp-for="EstadoTurista" />
+                            </label>
                         </div>
                         <div class="form-group">
-                            <input type="submit" value="Atualizar" class="btn btn-success" /> | <button class="btn btn-default"><a asp-action="Index">Voltar à lista</a></button>
+                            <input type="submit" value="Atualizar" class="btn btn-success" /> | <button class="btn btn-info"><a asp-action="Index">Voltar à lista</a></button>
                         </div>
                     </form>
                 </div>
             </div>
+            </section>
+        </div>
+    </div>
 
             @section Scripts {
                 @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
             }
-        </section>
-    </div>
-</div>
-

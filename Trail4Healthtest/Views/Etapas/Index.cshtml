@@ -1,0 +1,74 @@
+﻿@model IEnumerable<Trail4Healthtest.Models.Etapa>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="bread_area">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <ol class="breadcrumb">
+                    <li><a href="/">Trail4Health</a></li>
+                    <li class="active">Todos os Comentários</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <section class="page col-sm-12">
+            <div class="row">
+                <div class="col-lg-12">
+                    <button class="btn btn-info">
+                        <a asp-action="Create">Criar nova etapa</a>
+                    </button>
+                    <br />
+                    <br />
+                    <table class="table table-condensed">
+                        <thead>
+                            <tr>
+                                <th>
+                                    Nome da Etapa
+                                </th>
+                                <th>
+                                   Distância
+                                </th>
+                                <th>
+                                   Duração
+                                </th>
+                                <th>
+                                   Geo-Localização
+                                </th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Nomeetapa)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Distancia)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Duracao)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Geolocalizacao)
+                                </td>
+                                <td>
+                                    <button class="btn btn-toolbar">
+                                        <a asp-action="Edit" asp-route-id="@item.EtapaId">Editar</a>
+                                    </button> |
+                                    <button class="btn btn-danger">
+                                        <a asp-action="Delete" asp-route-id="@item.EtapaId">Apagar</a>
+                                    </button>
+                                </td>
+                            </tr>
+                            }
+                        </tbody>
+                    </table>

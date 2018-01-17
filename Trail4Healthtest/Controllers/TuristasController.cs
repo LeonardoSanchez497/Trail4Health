@@ -5,16 +5,15 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using Trail4Healthtest.Data;
 using Trail4Healthtest.Models;
 
 namespace Trail4Healthtest.Controllers
 {
     public class TuristasController : Controller
     {
-        private readonly TrailsDbContext _context;
+        private readonly Trails4HealthContext _context;
 
-        public TuristasController(TrailsDbContext context)
+        public TuristasController(Trails4HealthContext context)
         {
             _context = context;
         }
@@ -34,7 +33,7 @@ namespace Trail4Healthtest.Controllers
             }
 
             var turista = await _context.Turista
-                .SingleOrDefaultAsync(m => m.turistaId == id);
+                .SingleOrDefaultAsync(m => m.TuristaId == id);
             if (turista == null)
             {
                 return NotFound();
@@ -54,7 +53,7 @@ namespace Trail4Healthtest.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("turistaId,nome,numeroTelefone,nif,email,contato_emergencia")] Turista turista)
+        public async Task<IActionResult> Create([Bind("TuristaId,Contatoemergencia,Email,Nif,Nome,NumeroTelefone,EstadoTurista")] Turista turista)
         {
             if (ModelState.IsValid)
             {
@@ -73,7 +72,7 @@ namespace Trail4Healthtest.Controllers
                 return NotFound();
             }
 
-            var turista = await _context.Turista.SingleOrDefaultAsync(m => m.turistaId == id);
+            var turista = await _context.Turista.SingleOrDefaultAsync(m => m.TuristaId == id);
             if (turista == null)
             {
                 return NotFound();
@@ -86,9 +85,9 @@ namespace Trail4Healthtest.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("turistaId,nome,numeroTelefone,nif,email,contato_emergencia")] Turista turista)
+        public async Task<IActionResult> Edit(int id, [Bind("TuristaId,Contatoemergencia,Email,Nif,Nome,NumeroTelefone,EstadoTurista")] Turista turista)
         {
-            if (id != turista.turistaId)
+            if (id != turista.TuristaId)
             {
                 return NotFound();
             }
@@ -102,7 +101,7 @@ namespace Trail4Healthtest.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!TuristaExists(turista.turistaId))
+                    if (!TuristaExists(turista.TuristaId))
                     {
                         return NotFound();
                     }
@@ -125,7 +124,7 @@ namespace Trail4Healthtest.Controllers
             }
 
             var turista = await _context.Turista
-                .SingleOrDefaultAsync(m => m.turistaId == id);
+                .SingleOrDefaultAsync(m => m.TuristaId == id);
             if (turista == null)
             {
                 return NotFound();
@@ -139,7 +138,7 @@ namespace Trail4Healthtest.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var turista = await _context.Turista.SingleOrDefaultAsync(m => m.turistaId == id);
+            var turista = await _context.Turista.SingleOrDefaultAsync(m => m.TuristaId == id);
             _context.Turista.Remove(turista);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
@@ -147,7 +146,7 @@ namespace Trail4Healthtest.Controllers
 
         private bool TuristaExists(int id)
         {
-            return _context.Turista.Any(e => e.turistaId == id);
+            return _context.Turista.Any(e => e.TuristaId == id);
         }
     }
 }

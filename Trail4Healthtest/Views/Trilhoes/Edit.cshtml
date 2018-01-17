@@ -10,7 +10,7 @@
             <div class="col-sm-12">
                 <ol class="breadcrumb">
                     <li><a href="/">Trail4Health</a></li>
-                    <li class="active">Editar Trilho</li>
+                    <li class="active">Editar trilho</li>
                 </ol>
             </div>
         </div>
@@ -19,66 +19,70 @@
 <div class="container">
     <div class="row">
         <section class="page col-sm-12">
-            <h2 class="page-title">Editar trilho</h2>
             <div class="row">
-                <div class="col-lg-10">
+                <div class="col-lg-12">
                     <form asp-action="Edit">
                         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                        <input type="hidden" asp-for="trilhoId" />
                         <div class="form-group">
-                            <label asp-for="distancia_a_percorrer" class="control-label"></label>
-                            <input asp-for="distancia_a_percorrer" class="form-control" />
-                            <span asp-validation-for="distancia_a_percorrer" class="text-danger"></span>
+                            <label asp-for="Nometrilho" class="control-label">Nome do trilho</label>
+                            <input asp-for="Nometrilho" class="form-control" />
+                            <span asp-validation-for="Nometrilho" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="Coddesnivel" class="control-label">Inclinação</label>
+                            <select asp-for="Coddesnivel" class="form-control" asp-items="ViewBag.Coddesnivel"></select>
                         </div>
                         <div class="form-group">
-                            <label asp-for="duracao_media" class="control-label"></label>
-                            <input asp-for="duracao_media" class="form-control" />
-                            <span asp-validation-for="duracao_media" class="text-danger"></span>
+                            <label asp-for="Coddificuldade" class="control-label">Dificuldade</label>
+                            <select asp-for="Coddificuldade" class="form-control" asp-items="ViewBag.Coddificuldade"></select>
                         </div>
                         <div class="form-group">
-                            <label asp-for="loc_inicio" class="control-label"></label>
-                            <input asp-for="loc_inicio" class="form-control" />
-                            <span asp-validation-for="loc_inicio" class="text-danger"></span>
+                            <label asp-for="Codepocaaconselhda" class="control-label">Época que acoselhada</label>
+                            <select asp-for="Codepocaaconselhda" class="form-control" asp-items="ViewBag.Codepocaaconselhda"></select>
                         </div>
                         <div class="form-group">
-                            <label asp-for="loc_fim" class="control-label"></label>
-                            <input asp-for="loc_fim" class="form-control" />
-                            <span asp-validation-for="loc_fim" class="text-danger"></span>
+                            <label asp-for="Distanciaapercorrer" class="control-label">Distância a percorrer</label>
+                            <input asp-for="Distanciaapercorrer" class="form-control" />
+                            <span asp-validation-for="Distanciaapercorrer" class="text-danger"></span>
                         </div>
                         <div class="form-group">
-                            <label asp-for="cod_dificuldade" class="control-label"></label>
-                            <input asp-for="cod_dificuldade" class="form-control" />
-                            <span asp-validation-for="cod_dificuldade" class="text-danger"></span>
+                            <label asp-for="Duracaomedia" class="control-label">Duração Média</label>
+                            <input asp-for="Duracaomedia" class="form-control" />
+                            <span asp-validation-for="Duracaomedia" class="text-danger"></span>
                         </div>
                         <div class="form-group">
-                            <label asp-for="cod_desnivel" class="control-label"></label>
-                            <input asp-for="cod_desnivel" class="form-control" />
-                            <span asp-validation-for="cod_desnivel" class="text-danger"></span>
+                            <label asp-for="Locinicio" class="control-label">Local de Início</label>
+                            <input asp-for="Locinicio" class="form-control" />
+                            <span asp-validation-for="Locinicio" class="text-danger"></span>
                         </div>
                         <div class="form-group">
-                            <label asp-for="cod_etapa_aconselhada" class="control-label"></label>
-                            <input asp-for="cod_etapa_aconselhada" class="form-control" />
-                            <span asp-validation-for="cod_etapa_aconselhada" class="text-danger"></span>
+                            <label asp-for="Locfim" class="control-label">Local de fim</label>
+                            <input asp-for="Locfim" class="form-control" />
+                            <span asp-validation-for="Locfim" class="text-danger"></span>
                         </div>
                         <div class="form-group">
-                            <label asp-for="ativo" class="control-label"></label>
-                            <input asp-for="ativo" class="form-control" />
-                            <span asp-validation-for="ativo" class="text-danger"></span>
+                            <div class="checkbox-inline">
+                                <label>
+                                    <input asp-for="Ativo" />   Ativo?
+                                </label>
+                                |
+                                <div class="checkbox-inline">
+                                    <label>
+                                        <input asp-for="NewsletterAtiva" />   Newsletter para este trilho?
+                                    </label>
+                                </div>
+                            </div>
                         </div>
                         <div class="form-group">
-                            <input type="submit" value="Save" class="btn btn-default" />
+                            <input type="submit" value="Atualizar" class="btn btn-success" /> | <button class="btn btn-info"><a asp-action="Index">Voltar à lista</a></button>
                         </div>
                     </form>
                 </div>
             </div>
-
-            <div>
-                <a asp-action="Index">Back to List</a>
-            </div>
-
+            </section>
+        </div>
+    </div>
             @section Scripts {
                 @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
             }
-        </section>
-    </div>
-</div>

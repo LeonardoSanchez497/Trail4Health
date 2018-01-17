@@ -4,49 +4,63 @@
     ViewData["Title"] = "Details";
 }
 
-<h2>Details</h2>
+<div class="bread_area">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <ol class="breadcrumb">
+                    <li><a href="/">Trail4Health</a></li>
+                    <li class="active">Detalhes do Comentário</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <section class="page col-sm-12">
+            <div class="row">
+                <div class="col-lg-12">
+                    <dl class="dl-horizontal">
+                        <dt>
+                            Comentário
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.Comentar)
+                        </dd>
+                        <dt>
+                            Duração do Trilho
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.DuracaoTrilho)
+                        </dd>
+                        <dt>
+                            Avaliação
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.Avaliacao.Classificacao)
+                        </dd>
+                        <dt>
+                            Trilho
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.Trilho.Nometrilho)
+                        </dd>
+                        <dt>
+                            Nome do Turista
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.Turista.Nome)
+                        </dd>
+                    </dl>
 
-<div>
-    <h4>Comentarios</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-           Id do trilho
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.trilhoId)
-        </dd>
-        <dt>
-            Duração do trilho
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.duracaoTrilho)
-        </dd>
-        <dt>
-            Avalição do trilho
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.avaliacao)
-        </dd>
-        <dt>
-           Comentar
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.comentar)
-        </dd>
-        <dt>
-           Turista
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.turista.turistaId)
-        </dd>
-    </dl>
+                    <div class="form-group">
+                        <button class="btn btn-toolbar"><a asp-action="Edit" asp-route-id="@Model.ComentarioId">Editar</a></button> | <button class="btn btn-info"><a asp-action="Index">Voltar à lista</a></button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
 </div>
-<div>
-    <button class="btn btn-info">
-        <a asp-action="Edit" asp-route-id="@Model.trilhoId">Editar</a>
-    </button> |
-    <button class="btn btn-default">
-        <a asp-action="Index">Volta à Lista</a>
-    </button>
-</div>
+

@@ -1,14 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Trail4Healthtest.Models
 {
-    public class Desnivel
+    public partial class Desnivel
     {
-        public int desnivelId { get; set; } //PK
-        public string nome_desnivel { get; set; }
-        public string observacoes { get; set; } 
+        public Desnivel()
+        {
+            Trilho = new HashSet<Trilho>();
+        }
+
+        public int DesnivelId { get; set; }
+        public string Nomedesnivel { get; set; }
+        public string Observacoes { get; set; }
+
+        public ICollection<Trilho> Trilho { get; set; }
     }
 }

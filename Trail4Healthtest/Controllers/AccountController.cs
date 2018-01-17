@@ -217,11 +217,12 @@ namespace Trail4Healthtest.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Register(RegisterViewModel model, string returnUrl = null)
         {
-            ViewData["ReturnUrl"] = returnUrl;
+            //ViewData["ReturnUrl"] = "~/Turistas/Create";
             if (ModelState.IsValid)
             {
                 var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
                 var result = await _userManager.CreateAsync(user, model.Password);
+
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("User created a new account with password.");
@@ -232,14 +233,16 @@ namespace Trail4Healthtest.Controllers
 
                     await _signInManager.SignInAsync(user, isPersistent: false);
                     _logger.LogInformation("User created a new account with password.");
-                    return RedirectToLocal(returnUrl);
+                   return RedirectToAction(nameof(TuristasController.Create), "Turistas");
                 }
                 AddErrors(result);
+                
             }
 
             // If we got this far, something failed, redisplay form
             return View(model);
         }
+
 
         [HttpPost]
         [ValidateAntiForgeryToken]

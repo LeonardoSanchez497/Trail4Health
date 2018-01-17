@@ -1,20 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Trail4Healthtest.Models
 {
-    public class Comentarios
+    public partial class Comentarios
     {
-        public int comentarioId { get; set; }//PK
-        public int turistaId { get; set; }//FK
-        public int trilhoId { get; set; } //FK
-        public string duracaoTrilho { get; set; }
-        public string avaliacao { get; set; }
-        public string comentar { get; set; }
+        public int ComentarioId { get; set; }
+        public int AvaliacaoId { get; set; }
+        public string Comentar { get; set; }
+        public string Completou { get; set; }
+        public string DuracaoTrilho { get; set; }
+        public int TrilhoId { get; set; }
+        public int TuristaId { get; set; }
 
-        public Turista turista { get; set; }
-
+        public Avaliacao Avaliacao { get; set; }
+        public Trilho Trilho { get; set; }
+        public Turista Turista { get; set; }
     }
 }
