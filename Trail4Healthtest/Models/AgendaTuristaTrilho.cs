@@ -6,8 +6,9 @@ namespace Trail4Healthtest.Models
     public partial class AgendaTuristaTrilho
     {
         public int AgendaId { get; set; }
+        public DateTime? Datainicio { get; set; }
         public DateTime? Datafim { get; set; }
-        public DateTime? Datainicio { get; set; } 
+        
         public string Tempogasto { get; set; }
         public int Trilhoid { get; set; }
         public int Turistaid { get; set; }

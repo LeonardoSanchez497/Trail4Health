@@ -21,7 +21,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <button class="btn btn-info">
-                        <a asp-action="Create">Criar Novo Estado</a>
+                        <a asp-action="Create">Agendar nova Aventura</a>
                     </button>
                     <br />
                     <br />
@@ -29,20 +29,23 @@
                         <thead>
                             <tr>
                                 <th>
-                                    Data Início
-                                </th>
-                                <th>
-                                    Data Fim
-                                </th>
-                                <th>
-                                    Tempo gasto
+                                    Nome Turista
                                 </th>
                                 <th>
                                     Nome Trilho
                                 </th>
                                 <th>
-                                    Nome Turista
+                                    Tempo gasto
                                 </th>
+                                <th>
+                                    Data Início
+                                </th>
+                                <th>
+                                    Data Fim
+                                </th>
+                                
+                                
+                                
                                 <th></th>
                             </tr>
                         </thead>
@@ -51,20 +54,24 @@
             {
                 <tr>
                     <td>
-                        @Html.DisplayFor(modelItem => item.Datafim)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Datainicio)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Tempogasto)
+                        @Html.DisplayFor(modelItem => item.Turista.Nome)
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.Trilho.Nometrilho)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.Turista.Nome)
+                        @Html.DisplayFor(modelItem => item.Tempogasto)
                     </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Datainicio)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Datafim)
+                    </td>
+                    
+                    
+                    
+                    
                     <td>
                         <button class="btn btn-toolbar">
                             <a asp-action="Edit" asp-route-id="@item.AgendaId">Editar</a>

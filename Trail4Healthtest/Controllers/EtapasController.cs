@@ -6,9 +6,11 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Trail4Healthtest.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Trail4Healthtest.Controllers
 {
+    [Authorize(Roles = "Administrador")]
     public class EtapasController : Controller
     {
         private readonly Trails4HealthContext _context;
