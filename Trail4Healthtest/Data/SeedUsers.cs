@@ -81,6 +81,7 @@ namespace Trail4Healthtest.Data
                         userManager.AddToRoleAsync(user, "Administrador").Wait();
                     }
                 }
+
             }
         }
     }

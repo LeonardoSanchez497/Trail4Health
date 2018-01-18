@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Trail4Healthtest.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Trail4Healthtest.Controllers
 {
@@ -45,13 +46,13 @@ namespace Trail4Healthtest.Controllers
 
             return View(comentarios);
         }
-
+        [Authorize(Roles = "Turista")]
         // GET: Comentarios/Create
         public IActionResult Create()
         {
             ViewData["AvaliacaoId"] = new SelectList(_context.Avaliacao, "AvaliacaoId", "Classificacao");
             ViewData["TrilhoId"] = new SelectList(_context.Trilho, "TrilhoId", "Nometrilho");
-            ViewData["TuristaId"] = new SelectList(_context.Turista, "TuristaId", "Nome");
+            ViewData["TuristaId"] = new SelectList(_context.Turista, "TuristaId", "Nome" );
             return View();
         }
 
@@ -60,7 +61,7 @@ namespace Trail4Healthtest.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ComentarioId,AvaliacaoId,Comentar,Completou,DuracaoTrilho,TrilhoId,TuristaId")] Comentarios comentarios)
+        public async Task<IActionResult> Create([Bind("ComentarioId,AvaliacaoId,Comentar,Completou,DuracaoTrilho,TrilhoId,TuristaId")] Comentarios comentarios, string passagemdetexto)
         {
             if (ModelState.IsValid)
             {
@@ -68,11 +69,13 @@ namespace Trail4Healthtest.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+
             ViewData["AvaliacaoId"] = new SelectList(_context.Avaliacao, "AvaliacaoId", "Classificacao", comentarios.AvaliacaoId);
             ViewData["TrilhoId"] = new SelectList(_context.Trilho, "TrilhoId", "Nometrilho", comentarios.TrilhoId);
-            ViewData["TuristaId"] = new SelectList(_context.Turista, "TuristaId", "Nome", comentarios.TuristaId);
+            ViewData["TuristaId"] = new SelectList(_context.Turista, "TuristaId", "Nome", passagemdetexto);
             return View(comentarios);
         }
+
 
         // GET: Comentarios/Edit/5
         public async Task<IActionResult> Edit(int? id)

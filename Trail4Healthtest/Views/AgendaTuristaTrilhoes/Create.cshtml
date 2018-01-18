@@ -1,5 +1,26 @@
 ﻿@model Trail4Healthtest.Models.AgendaTuristaTrilho
 
+@inject UserManager<ApplicationUser> UserManager
+@{
+    var context = new Trails4HealthContext();
+
+    ViewData["Title"] = "Create";
+    var user = await UserManager.GetUserAsync(User);
+    var userId = user.Email;
+    var nometurista = "";
+    var idturista = 0;
+
+    var record = context.Turista.Where(r => r.Email == userId);
+
+    foreach (var item in record)
+    {
+
+        nometurista = item.Nome;
+        idturista = item.TuristaId;
+    }
+
+}
+
 @{
     ViewData["Title"] = "Create";
 }
@@ -29,8 +50,9 @@
                             <select asp-for="Trilhoid" class="form-control" asp-items="ViewBag.Trilhoid"></select>
                         </div>
                         <div class="form-group">
-                            <label asp-for="Turistaid" class="control-label">Nome do Turista</label>
-                            <select asp-for="Turistaid" class="form-control" asp-items="ViewBag.Turistaid"></select>
+                            <label asp-for="Turistaid" class="control-label">Qual é o seu nome?</label>
+                            <input readonly class="form-control" type="text" value="@nometurista" />
+                            <input style="display:none;" id="passagemdetexto" asp-for="Turistaid" class="form-control" type="text" value="@idturista" />
                         </div>
                         <div class="form-group">
                             <label asp-for="Datainicio" class="control-label">Data Inicio</label>

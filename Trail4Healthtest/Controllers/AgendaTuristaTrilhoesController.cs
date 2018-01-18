@@ -58,7 +58,7 @@ namespace Trail4Healthtest.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("AgendaId,Datafim,Datainicio,Tempogasto,Trilhoid,Turistaid")] AgendaTuristaTrilho agendaTuristaTrilho)
+        public async Task<IActionResult> Create([Bind("AgendaId,Datafim,Datainicio,Tempogasto,Trilhoid,Turistaid")] AgendaTuristaTrilho agendaTuristaTrilho, string passagemdetexto)
         {
             if (ModelState.IsValid)
             {
@@ -67,7 +67,7 @@ namespace Trail4Healthtest.Controllers
                 return RedirectToAction(nameof(Index));
             }
             ViewData["Trilhoid"] = new SelectList(_context.Trilho, "TrilhoId", "Nometrilho", agendaTuristaTrilho.Trilhoid);
-            ViewData["Turistaid"] = new SelectList(_context.Turista, "TuristaId", "Nome", agendaTuristaTrilho.Turistaid);
+            ViewData["Turistaid"] = new SelectList(_context.Turista, "TuristaId", "Nome", passagemdetexto);
             return View(agendaTuristaTrilho);
         }
 

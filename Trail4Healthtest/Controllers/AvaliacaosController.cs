@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Trail4Healthtest.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Trail4Healthtest.Controllers
 {
@@ -23,7 +24,7 @@ namespace Trail4Healthtest.Controllers
         {
             return View(await _context.Avaliacao.ToListAsync());
         }
-
+        
         // GET: Avaliacaos/Details/5
         public async Task<IActionResult> Details(int? id)
         {
@@ -41,7 +42,7 @@ namespace Trail4Healthtest.Controllers
 
             return View(avaliacao);
         }
-
+        [Authorize(Roles = "Administrador")]
         // GET: Avaliacaos/Create
         public IActionResult Create()
         {
@@ -63,7 +64,7 @@ namespace Trail4Healthtest.Controllers
             }
             return View(avaliacao);
         }
-
+        [Authorize(Roles = "Administrador")]
         // GET: Avaliacaos/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
@@ -114,7 +115,7 @@ namespace Trail4Healthtest.Controllers
             }
             return View(avaliacao);
         }
-
+        [Authorize(Roles = "Administrador")]
         // GET: Avaliacaos/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {

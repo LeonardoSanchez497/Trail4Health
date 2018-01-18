@@ -51,13 +51,16 @@
                         @Html.DisplayFor(modelItem => item.Observacoes)
                     </td>
                     <td>
-                        @if (User.IsInRole("Administrador")) {
+                        @if (User.IsInRole("Administrador"))
+                        {
                         <button class="btn btn-toolbar">
                             <a asp-action="Edit" asp-route-id="@item.DesnivelId">Editar</a>
-                        </button> 
+                        </button> }
                         <button class="btn btn-default">
                             <a asp-action="Details" asp-route-id="@item.DesnivelId">Detalhes</a>
                         </button> 
+                        @if (User.IsInRole("Administrador"))
+                        {
                         <button class="btn btn-danger">
                             <a asp-action="Delete" asp-route-id="@item.DesnivelId">Apagar</a>
                         </button>}
