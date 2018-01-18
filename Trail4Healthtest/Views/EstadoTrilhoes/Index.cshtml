@@ -10,7 +10,7 @@
             <div class="col-sm-12">
                 <ol class="breadcrumb">
                     <li><a href="/">Trail4Health</a></li>
-                    <li class="active">Todos os estados dos trilhos</li>
+                    <li class="active">Estados dos trilhos</li>
                 </ol>
             </div>
         </div>
@@ -21,9 +21,11 @@
         <section class="page col-sm-12">
             <div class="row">
                 <div class="col-lg-12">
+@if (User.IsInRole("Administrador"))
+{
                     <button class="btn btn-info">
                         <a asp-action="Create">Criar Novo estado do trilho</a>
-                    </button>
+                    </button>}
                     <br />
                     <br />
                     <table class="table table-condensed">
@@ -35,11 +37,12 @@
                                 <th>
                                     Causa
                                 </th>
-                                <th>
-                                    Data prevista de fim
-                                </th>
+                                
                                 <th>
                                    Data de início
+                                </th>
+                                <th>
+                                    Data prevista do fim
                                 </th>
                                 <th>
                                    Estado
@@ -59,24 +62,27 @@
                                     @Html.DisplayFor(modelItem => item.Causa)
                                 </td>
                                 <td>
-                                    @Html.DisplayFor(modelItem => item.Datafim)
-                                </td>
-                                <td>
                                     @Html.DisplayFor(modelItem => item.Datainicio)
                                 </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Datafim)
+                                </td>
+                                
                                 <td>
                                     @Html.DisplayFor(modelItem => item.Estado.Nomeestado)
                                 </td>
                                 <td>
+@if (User.IsInRole("Administrador"))
+{
                                     <button class="btn btn-toolbar">
                                         <a asp-action="Edit" asp-route-id="@item.EstadoTrilhoId">Editar</a>
-                                    </button> |
+                                    </button> 
                                     <button class="btn btn-default">
                                         <a asp-action="Details" asp-route-id="@item.EstadoTrilhoId">Detalhes</a>
-                                    </button> |
+                                    </button> 
                                     <button class="btn btn-danger">
                                         <a asp-action="Delete" asp-route-id="@item.EstadoTrilhoId">Apagar</a>
-                                    </button>
+                                    </button>}
                                 </td>
                             </tr>
                             }

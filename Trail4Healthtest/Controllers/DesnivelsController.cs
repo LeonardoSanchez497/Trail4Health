@@ -6,9 +6,11 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Trail4Healthtest.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Trail4Healthtest.Controllers
 {
+    
     public class DesnivelsController : Controller
     {
         private readonly Trails4HealthContext _context;
@@ -43,6 +45,7 @@ namespace Trail4Healthtest.Controllers
         }
 
         // GET: Desnivels/Create
+        [Authorize(Roles = "Administrador")]
         public IActionResult Create()
         {
             return View();
@@ -51,6 +54,7 @@ namespace Trail4Healthtest.Controllers
         // POST: Desnivels/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("DesnivelId,Nomedesnivel,Observacoes")] Desnivel desnivel)
@@ -63,7 +67,7 @@ namespace Trail4Healthtest.Controllers
             }
             return View(desnivel);
         }
-
+        [Authorize(Roles = "Administrador")]
         // GET: Desnivels/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
@@ -83,6 +87,7 @@ namespace Trail4Healthtest.Controllers
         // POST: Desnivels/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize(Roles = "Administrador")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("DesnivelId,Nomedesnivel,Observacoes")] Desnivel desnivel)
@@ -114,7 +119,7 @@ namespace Trail4Healthtest.Controllers
             }
             return View(desnivel);
         }
-
+        [Authorize(Roles = "Administrador")]
         // GET: Desnivels/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
@@ -132,7 +137,7 @@ namespace Trail4Healthtest.Controllers
 
             return View(desnivel);
         }
-
+        [Authorize(Roles = "Administrador")]
         // POST: Desnivels/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]

@@ -1,10 +1,12 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Authorization;
+using System;
 using System.Collections.Generic;
 
 namespace Trail4Healthtest.Models
 {
+    
     public partial class Desnivel
-    {
+    {  
         public Desnivel()
         {
             Trilho = new HashSet<Trilho>();
