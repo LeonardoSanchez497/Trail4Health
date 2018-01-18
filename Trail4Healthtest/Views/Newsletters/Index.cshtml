@@ -10,7 +10,7 @@
             <div class="col-sm-12">
                 <ol class="breadcrumb">
                     <li><a href="/">Trail4Health</a></li>
-                    <li class="active">Todos os Comentários</li>
+                    <li class="active">Consultar Newsletter</li>
                 </ol>
             </div>
         </div>
@@ -21,9 +21,11 @@
         <section class="page col-sm-12">
             <div class="row">
                 <div class="col-lg-12">
+@if (User.IsInRole("Administrador"))
+{
                     <button class="btn btn-info">
                         <a asp-action="Create">Criar nova newsletter</a>
-                    </button>
+                    </button>}
                     <br />
                     <br />
                     <table class="table table-condensed">
@@ -63,12 +65,14 @@
                                 </td>
 
                                 <td>
+@if (User.IsInRole("Administrador"))
+{
                                     <button class="btn btn-toolbar">
                                         <a asp-action="Edit" asp-route-id="@item.NewletterId">Editar</a>
-                                    </button> |
+                                    </button> 
                                     <button class="btn btn-danger">
                                         <a asp-action="Delete" asp-route-id="@item.NewletterId">Apagar</a>
-                                    </button>
+                                    </button>}
                                 </td>
                             </tr>
                             }

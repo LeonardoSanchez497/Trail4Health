@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Trail4Healthtest.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Trail4Healthtest.Controllers
 {
@@ -45,7 +46,7 @@ namespace Trail4Healthtest.Controllers
 
             return View(trilho);
         }
-
+        [Authorize(Roles = "Administrador")]
         // GET: Trilhoes/Create
         public IActionResult Create()
         {
@@ -73,7 +74,7 @@ namespace Trail4Healthtest.Controllers
             ViewData["Codepocaaconselhda"] = new SelectList(_context.EpocaAconcelhada, "EpocaId", "Nomeepoca", trilho.Codepocaaconselhda);
             return View(trilho);
         }
-
+        [Authorize(Roles = "Administrador")]
         // GET: Trilhoes/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
@@ -130,7 +131,7 @@ namespace Trail4Healthtest.Controllers
             ViewData["Codepocaaconselhda"] = new SelectList(_context.EpocaAconcelhada, "EpocaId", "Nomeepoca", trilho.Codepocaaconselhda);
             return View(trilho);
         }
-
+        [Authorize(Roles = "Administrador")]
         // GET: Trilhoes/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {

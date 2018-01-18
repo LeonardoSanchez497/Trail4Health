@@ -55,7 +55,9 @@
                     </dl>
 
                     <div class="form-group">
-                        <button class="btn btn-toolbar"><a asp-action="Edit" asp-route-id="@Model.ComentarioId">Editar</a></button> | <button class="btn btn-info"><a asp-action="Index">Voltar à lista</a></button>
+@if (User.IsInRole("Administrador"))
+{
+                        <button class="btn btn-toolbar"><a asp-action="Edit" asp-route-id="@Model.ComentarioId">Editar</a></button> } <button class="btn btn-info"><a asp-action="Index">Voltar à lista</a></button>
                     </div>
                 </div>
             </div>
