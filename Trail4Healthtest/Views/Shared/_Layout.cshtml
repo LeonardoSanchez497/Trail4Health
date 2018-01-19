@@ -45,7 +45,7 @@
                                     <li><a tabindex="-1" href="~/EpocaAconcelhadas/Create" title="">Criar tipos de épocas aconselhadas</a></li>
                                     <li><a tabindex="-1" href="~/Estadoes/Create" title="">Criar novo estado para o trilho</a></li>
                                     <li><a tabindex="-1" href="~/Estadoes" title="">Consultar estados para o trilho</a></li>
-                                    <li><a tabindex="-1" href="~/EstadoTrilhoes/Create" title="">Criar estado para identificar como está o trilho</a></li>
+                                    <li><a tabindex="-1" href="~/EstadoTrilhoes/Create" title="">Alterar estado do Trilho</a></li>
                                     <li><a tabindex="-1" href="~/Etapas/Create" title="">Criar novas etapas</a></li>
                                     <li><a tabindex="-1" href="~/Etapas" title="">Consultar etapas</a></li>
                                     <li><a tabindex="-1" href="~/EtapaTrilhoes/Create" title="">Criar nova etapa dos trilhos</a></li>
@@ -69,6 +69,7 @@
                                     <li><a href="~/EtapaTrilhoes" title="">Consultar as etapas dos trilhos</a></li>
                                     <li><a href="~/Newsletters" title="">Consultar Newsletters</a></li>
                                     <li><a href="~/Trilhoes" title="">Consultar trilhos</a></li>
+                                    <li><a href="~/Comentarios/Create" title="">Comentar Experiência</a></li>
                                     <li><a href="~/Comentarios/index" title="">Consultar comentarios</a></li>
                                     
                                 </ul>
@@ -81,6 +82,14 @@
                                     <li><a href="~/AgendaTuristaTrilhoes/" title="">Consultar a agenda</a></li>
                                     @*<li><a href="#" title="">SUB MENU 3</a></li>*@
                                 </ul>
+                            <li class="dropdown">
+                                <a href="#" title="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Utilizador<span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="~/Turistas/Index" title="">Criar nova marcação para fazer trilho</a></li>
+                                    <li><a href="~/AgendaTuristaTrilhoes/" title="">Consultar a agenda</a></li>
+                                    @*<li><a href="#" title="">SUB MENU 3</a></li>*@
+                                </ul>
+                            </li>
                             </li>
                         }
                         <li><a asp-area="" asp-controller="Home" asp-action="About">Sobre</a></li>

@@ -47,11 +47,7 @@
                             <input readonly class="form-control" type="text" value="@nometurista" />
                             <input style="display:none;" id="passagemdetexto" asp-for="TuristaId" class="form-control" type="text" value="@idturista" />
                         </div>
-                        <div class="form-group">
-                            <label asp-for="Comentar" class="control-label">Comentário</label>
-                            <input asp-for="Comentar" class="form-control" type="text" />
-                            <span asp-validation-for="Comentar" class="text-danger"></span>
-                        </div>
+                        
                         <div class="form-group">
                             <label asp-for="DuracaoTrilho" class="control-label">Duração</label>
                             <input asp-for="DuracaoTrilho" class="form-control" />
@@ -60,6 +56,11 @@
                         <div class="form-group">
                             <label asp-for="AvaliacaoId" class="control-label">Qual a sua Avaliação?</label>
                             <select asp-for="AvaliacaoId" class="form-control" asp-items="ViewBag.AvaliacaoId"></select>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Comentar" class="control-label">Comentário</label>
+                            <input asp-for="Comentar" class="form-control" type="text" /> 
+                            <span asp-validation-for="Comentar" class="text-danger"></span>
                         </div>
                         <div class="form-group">
                             <input type="submit" value="Inserir" class="btn btn-success" /> | <button class="btn btn-info"><a asp-action="Index">Voltar à lista</a></button>

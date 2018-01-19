@@ -21,6 +21,7 @@ namespace Trail4Healthtest.Controllers
         // GET: Turistas
         public async Task<IActionResult> Index()
         {
+
             return View(await _context.Turista.ToListAsync());
         }
 

@@ -22,7 +22,7 @@ namespace Trail4Healthtest.Controllers
         // GET: Comentarios
         public async Task<IActionResult> Index()
         {
-            var trails4HealthContext = _context.Comentarios.Include(c => c.Avaliacao).Include(c => c.Trilho).Include(c => c.Turista);
+            var trails4HealthContext = _context.Comentarios.Include(c => c.Avaliacao).Include(c => c.Trilho).Include(c => c.Turista).OrderBy(c => c.Trilho.Nometrilho);
             return View(await trails4HealthContext.ToListAsync());
         }
 
