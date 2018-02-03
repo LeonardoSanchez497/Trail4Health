@@ -38,40 +38,46 @@
                                 <a href="#" title="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Administrador<span class="caret"></span></a>
                                 @* ADMINISTRADOR *@
                                 <ul class="dropdown-menu">
-                                    <li><a tabindex="-1" href="~/Avaliacaos/Create" title="">Criar tipo de avaliações </a></li>
-                                    <li><a tabindex="-1" href="~/Avaliacaos" title="">Consultar avaliações </a></li>
-                                    <li><a tabindex="-1" href="~/Desnivels/Create" title="">Criar inclinações </a></li>
-                                    <li><a tabindex="-1" href="~/Dificuldades/Create" title="">Criar níveis de dificuldade</a></li>
-                                    <li><a tabindex="-1" href="~/EpocaAconcelhadas/Create" title="">Criar tipos de épocas aconselhadas</a></li>
-                                    <li><a tabindex="-1" href="~/Estadoes/Create" title="">Criar novo estado para o trilho</a></li>
-                                    <li><a tabindex="-1" href="~/Estadoes" title="">Consultar estados para o trilho</a></li>
-                                    <li><a tabindex="-1" href="~/EstadoTrilhoes/Create" title="">Alterar estado do Trilho</a></li>
-                                    <li><a tabindex="-1" href="~/Etapas/Create" title="">Criar novas etapas</a></li>
-                                    <li><a tabindex="-1" href="~/Etapas" title="">Consultar etapas</a></li>
-                                    <li><a tabindex="-1" href="~/EtapaTrilhoes/Create" title="">Criar nova etapa dos trilhos</a></li>
+                                    @*<li><a tabindex="-1" href="~/Avaliacaos/Create" title="">Criar tipo de avaliações </a></li>
+                                        <li><a tabindex="-1" href="~/Avaliacaos" title="">Consultar avaliações </a></li>
+                                        <li><a tabindex="-1" href="~/Desnivels/Create" title="">Criar inclinações </a></li>
+                                        <li><a tabindex="-1" href="~/Dificuldades/Create" title="">Criar níveis de dificuldade</a></li>
+                                        <li><a tabindex="-1" href="~/EpocaAconcelhadas/Create" title="">Criar tipos de épocas aconselhadas</a></li>
+                                        <li><a tabindex="-1" href="~/Estadoes/Create" title="">Criar novo estado para o trilho</a></li>
+                                        <li><a tabindex="-1" href="~/Estadoes" title="">Consultar estados para o trilho</a></li>
+                                        <li><a tabindex="-1" href="~/EstadoTrilhoes/Create" title="">Alterar estado do Trilho</a></li>
+                                        <li><a tabindex="-1" href="~/Etapas/Create" title="">Criar novas etapas</a></li>
+                                            <li><a tabindex="-1" href="~/Etapas" title="">Consultar etapas</a></li>
+                                        <li><a tabindex="-1" href="~/EtapaTrilhoes/Create" title="">Criar nova etapa dos trilhos</a></li>
+                                        <li><a tabindex="-1" href="~/Trilhoes/Create" title="">Criar novo Trilho</a>
+                                        </li>
+                                    *@
                                     <li><a tabindex="-1" href="~/Newsletters/Create" title="">Criar nova Newsletter</a></li>
-                                    <li><a tabindex="-1" href="~/Trilhoes/Create" title="">Criar novo Trilho</a></li>
                                     <li><a tabindex="-1" href="~/Turistas/" title="">Consultar Turistas</a></li>
-                                    @*<li><a href="#" title="">SUB MENU 3</a></li>*@
+                                    <li><a href="~/Comentarios/index" title="">Consultar comentarios</a></li>
+                                    <li><a href="~/EstadoTrilhoes" title="">Consultar o estado dos trilhos</a></li>
+                                    <li><a href="~/EtapaTrilhoes" title="">Consultar as etapas dos trilhos</a></li>
+                                    <li><a href="~/Newsletters" title="">Consultar Newsletters</a></li>
+                                    <li><a href="~/Trilhoes" title="">Consultar trilhos</a></li>
                                 </ul>
                             </li>
                         }
-                        @if (User.Identity.IsAuthenticated)
+                        @if (this.User.IsInRole("Turistas"))
                         {
                             <li class="dropdown">
                                 <a href="#" title="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Aventureiro<span class="caret"></span></a>
                                 @* ADMINISTRADOR *@
                                 <ul class="dropdown-menu">
-                                    <li><a href="~/Desnivels" title="">Consultar Inclinações</a></li>
-                                    <li><a href="~/Dificuldades" title="">Consultar níveis de dificuldade dos trilhos</a></li>
-                                    <li><a href="~/EpocaAconcelhadas" title="">Consultar épocas aconselhadas para realização dos trilhos</a></li>
+                                    @*<li><a href="~/Desnivels" title="">Consultar Inclinações</a></li>
+                                        <li><a href="~/Dificuldades" title="">Consultar níveis de dificuldade dos trilhos</a></li>
+                                        <li><a href="~/EpocaAconcelhadas" title="">Consultar épocas aconselhadas para realização dos trilhos</a></li>*@
                                     <li><a href="~/EstadoTrilhoes" title="">Consultar o estado dos trilhos</a></li>
                                     <li><a href="~/EtapaTrilhoes" title="">Consultar as etapas dos trilhos</a></li>
                                     <li><a href="~/Newsletters" title="">Consultar Newsletters</a></li>
                                     <li><a href="~/Trilhoes" title="">Consultar trilhos</a></li>
                                     <li><a href="~/Comentarios/Create" title="">Comentar Experiência</a></li>
                                     <li><a href="~/Comentarios/index" title="">Consultar comentarios</a></li>
-                                    
+
                                 </ul>
                             </li>
 
@@ -82,7 +88,7 @@
                                     <li><a href="~/AgendaTuristaTrilhoes/" title="">Consultar a agenda</a></li>
                                     @*<li><a href="#" title="">SUB MENU 3</a></li>*@
                                 </ul>
-                       </li>
+                            </li>
                         }
                         <li><a asp-area="" asp-controller="Home" asp-action="About">Sobre</a></li>
                         <li>@await Html.PartialAsync("_LoginPartial")</li>

@@ -14,7 +14,7 @@ namespace Trail4Healthtest.Data
             {
                 var ava = new List<Avaliacao>
             {
-                new Avaliacao { Classificacao = "Muito mau" },
+                new Avaliacao { Classificacao = "Muito mau"},
                 new Avaliacao { Classificacao = "Mau" },
                 new Avaliacao { Classificacao = "Bom" },
                 new Avaliacao { Classificacao = "Otimo" },
@@ -76,6 +76,19 @@ namespace Trail4Healthtest.Data
 
             };
                 context.AddRange(estado);
+                await context.SaveChangesAsync();
+            }
+
+            if (!context.Trilho.Any())
+            {
+
+                var trilho = new List<Trilho>
+                {
+
+                    new Trilho { Ativo=true, Coddesnivel=5,  Coddificuldade=4, Codepocaaconselhda=6, Distanciaapercorrer="5km", Duracaomedia="5horas", Locfim="Serra", Locinicio="Serra", NewsletterAtiva=true, Nometrilho="Alberto" },
+                };
+
+                context.AddRange(trilho);
                 await context.SaveChangesAsync();
             }
 
