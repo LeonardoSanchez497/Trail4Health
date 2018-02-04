@@ -1,8 +1,7 @@
-﻿@model RegisterViewModel
+﻿@model Trail4Healthtest.Models.AccountViewModels.RegisterViewModel
 @{
     ViewData["Title"] = "Register";
 }
-
 
 <div class="bread_area">
     <div class="container">
@@ -21,10 +20,15 @@
         <section class="page col-sm-12">
             <div class="row">
                 <div class="col-lg-12">
-                    <form asp-route-returnUrl="@ViewData["ReturnUrl"]" method="post">
+                    <form asp-action="Register">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                         <h4>Criar uma nova conta.</h4>
                         <hr />
                         <div asp-validation-summary="All" class="text-danger"></div>
+                        <div class="form-group">
+                            <label>Nome</label>
+                            <input id="passagemdetexto" value="ooi" class="form-control" />
+                        </div>
                         <div class="form-group">
                             <label asp-for="Email"></label>
                             <input asp-for="Email" class="form-control" />
@@ -39,6 +43,18 @@
                             <label asp-for="ConfirmPassword">Confirmar Password</label>
                             <input asp-for="ConfirmPassword" class="form-control" />
                             <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label>NIF</label>
+                            <input id="passagemdetextoNIF" value="237993333" class="form-control" />
+                        </div>
+                        <div class="form-group">
+                            <label>Nº Telemóvel</label>
+                            <input id="passagemdetextoTelemovel" value="914881128" class="form-control" />
+                        </div>
+                        <div class="form-group">
+                            <label>Contato de Emergência</label>
+                            <input id="passagemdetextoEmergencia" value="914881128" class="form-control" />
                         </div>
                         <button type="submit" class="btn btn-default">Registar</button>
                     </form>

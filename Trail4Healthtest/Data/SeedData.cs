@@ -85,7 +85,10 @@ namespace Trail4Healthtest.Data
                 var trilho = new List<Trilho>
                 {
 
-                    new Trilho { Ativo=true, Coddesnivel=5,  Coddificuldade=4, Codepocaaconselhda=6, Distanciaapercorrer="5km", Duracaomedia="5horas", Locfim="Serra", Locinicio="Serra", NewsletterAtiva=true, Nometrilho="Alberto" },
+                    new Trilho { Ativo=true, Coddesnivel=5,  Coddificuldade=4, Codepocaaconselhda=6, Distanciaapercorrer="5km", Duracaomedia="2horas", Locfim="Torre", Locinicio="Estancia", NewsletterAtiva=true, Nometrilho="Caminhada a torre" },
+                    new Trilho { Ativo=true, Coddesnivel=6,  Coddificuldade=5, Codepocaaconselhda=7, Distanciaapercorrer="10km", Duracaomedia="3horas", Locfim="Estancia", Locinicio="Serra", NewsletterAtiva=true, Nometrilho="Descida da montanha" },
+                    new Trilho { Ativo=true, Coddesnivel=7,  Coddificuldade=5, Codepocaaconselhda=9, Distanciaapercorrer="12km", Duracaomedia="5horas", Locfim="Poço do inferno", Locinicio="Estancia", NewsletterAtiva=true, Nometrilho="Descida ao Poço do inferno" },
+                    
                 };
 
                 context.AddRange(trilho);

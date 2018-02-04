@@ -20,6 +20,8 @@ namespace Trail4Healthtest.Controllers
     [Route("[controller]/[action]")]
     public class AccountController : Controller
     {
+        private Trails4HealthContext _context = new Trails4HealthContext();
+        //private readonly Trails4HealthContext _context = Tui;
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly IEmailSender _emailSender;
@@ -215,11 +217,19 @@ namespace Trail4Healthtest.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Register(RegisterViewModel model, string returnUrl = null)
+        public async Task<IActionResult> Register(RegisterViewModel model,[Bind("TuristaId,Contatoemergencia,Email,Nif,Nome,NumeroTelefone,EstadoTurista")] Turista turista,  string passagemdetexto, int passagemdetextoNIF, string passagemdetextoTelemovel, string passagemdetextoEmergencia, string returnUrl = null)
         {
+
+            
+            
             //ViewData["ReturnUrl"] = "~/Turistas/Create";
             if (ModelState.IsValid)
             {
+                //Adicionar Turista na Trail4HealthDB
+                turista = new Turista { Nome = passagemdetexto, Nif = passagemdetextoNIF, Contatoemergencia = passagemdetextoEmergencia, NumeroTelefone = passagemdetextoTelemovel, Email = model.Email, EstadoTurista = true };
+                _context.Add(turista);
+                await _context.SaveChangesAsync();
+
                 var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
                 var result = await _userManager.CreateAsync(user, model.Password);
 
@@ -233,7 +243,7 @@ namespace Trail4Healthtest.Controllers
 
                     await _signInManager.SignInAsync(user, isPersistent: false);
                     _logger.LogInformation("User created a new account with password.");
-                   return RedirectToAction(nameof(TuristasController.Create), "Turistas");
+                   return RedirectToAction(nameof(HomeController), "Home");
                 }
                 AddErrors(result);
                 
@@ -241,6 +251,7 @@ namespace Trail4Healthtest.Controllers
 
             // If we got this far, something failed, redisplay form
             return View(model);
+
         }
 
 
