@@ -95,6 +95,39 @@ namespace Trail4Healthtest.Data
                 await context.SaveChangesAsync();
             }
 
+
+            if (!context.Etapa.Any())
+            {
+
+                var etapa = new List<Etapa>
+                {
+
+                    new Etapa{ Distancia ="2km", Duracao="1hora", Geolocalizacao="por colocar", Nomeetapa = "inicio da subida à torre"},
+                    new Etapa{ Distancia ="3km", Duracao="1hora", Geolocalizacao="por colocar", Nomeetapa = "fim da subida, chegada a torre"},
+                    new Etapa{ Distancia ="6km", Duracao="3hora", Geolocalizacao="por colocar", Nomeetapa = "Descida ao poço do inferno"},
+                    new Etapa{ Distancia ="6km", Duracao="2hora", Geolocalizacao="por colocar", Nomeetapa = "Visita ao poço do inferno "},
+
+                };
+
+                context.AddRange(etapa);
+                await context.SaveChangesAsync();
+            }
+
+            if (!context.EtapaTrilho.Any())
+            {
+
+                var etapatrilho = new List<EtapaTrilho>
+                {
+
+                    new EtapaTrilho{ Ativo =true, Etapaid=2, OrdemEtapa="1", TrilhoId = 5},
+                    new EtapaTrilho{ Ativo =true, Etapaid=3, OrdemEtapa="2", TrilhoId = 5},
+                    new EtapaTrilho{ Ativo =true, Etapaid=4, OrdemEtapa="1", TrilhoId = 6},
+                    new EtapaTrilho{ Ativo =true, Etapaid=5, OrdemEtapa="2", TrilhoId = 6},
+                };
+
+                context.AddRange(etapatrilho);
+                await context.SaveChangesAsync();
+            }
         }
     }
 }

@@ -1,40 +1,83 @@
 ﻿@model IndexViewModel
+@inject UserManager<ApplicationUser> UserManager
 @{
     ViewData["Title"] = "Profile";
     ViewData.AddActivePage(ManageNavPages.Index);
 }
+
+@{
+    var user = await UserManager.GetUserAsync(User);
+    var userId = user.Email;
+    var context = new Trails4HealthContext();
+    var nometurista = "";
+    var numeroTl = "";
+    var cont= "";
+    var nif = 0;
+    var idturista = 0;
+    bool ativo = true;
+
+    var record = context.Turista.Where(r => r.Email == userId);
+
+    foreach (var item in record)
+    {
+
+        idturista = item.TuristaId;
+        nometurista = item.Nome;
+        numeroTl = item.NumeroTelefone;
+        nif = item.Nif;
+        cont = item.Contatoemergencia;
+        ativo = item.EstadoTurista;
+    }
+}
+
     <div class="row">
         <section class="page col-sm-12">
             <div class="row">
                 <div class="col-lg-12">
+                    @Html.Partial("_StatusMessage", Model.StatusMessage)
                     <form method="post">
                         <div asp-validation-summary="All" class="text-danger"></div>
                         <div class="form-group">
-                            <label asp-for="Username"></label>
-                            <input asp-for="Username" class="form-control" disabled />
+                            <label>Nome</label>
+                            <input class="form-control" name="passagemtextoNome" value="@nometurista" />
+                            <input style="display:none;" name="idTurista" value="@idturista"/>
                         </div>
                         <div class="form-group">
                             <label asp-for="Email"></label>
                             @if (Model.IsEmailConfirmed)
                             {
                                 <div class="input-group">
-                                    <input asp-for="Email" class="form-control" />
+                                    <label asp-for="Email" class="form-control" />
                                     <span class="input-group-addon" aria-hidden="true"><span class="glyphicon glyphicon-ok text-success"></span></span>
                                 </div>
                             }
                             else
                             {
                                 <input asp-for="Email" class="form-control" />
-                                <button asp-action="SendVerificationEmail" class="btn btn-link">Send verification email</button>
                             }
                             <span asp-validation-for="Email" class="text-danger"></span>
                         </div>
                         <div class="form-group">
-                            <label asp-for="PhoneNumber"></label>
+                            <label>NIF</label>
+                            <input class="form-control" name ="passagemtextoNif" value="@nif" />
+                        </div>
+                        <div class="form-group">
+                            <label>Numero de Telemóvel</label>
                             <input asp-for="PhoneNumber" class="form-control" />
                             <span asp-validation-for="PhoneNumber" class="text-danger"></span>
                         </div>
-                        <button type="submit" class="btn btn-default">Save</button>
+                        <div class="form-group">
+                            <label>Contato de Emergência</label>
+                            <input class="form-control" name ="passagemtextoEmerg" value="@cont" />
+                        </div>
+                        <div class="form-inline">
+                            <label>Desativar Conta?</label> &nbsp;
+
+                            <input  class="checkbox" name="passagemtextoAtivo" value="@ativo" type="checkbox" />
+
+                        </div>
+                        <br>
+                        <button type="submit" class="btn btn-default">Atualizar Dados</button>
                     </form>
                 </div>
             </div>

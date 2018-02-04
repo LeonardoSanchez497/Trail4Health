@@ -20,6 +20,7 @@ namespace Trail4Healthtest.Controllers
     [Route("[controller]/[action]")]
     public class ManageController : Controller
     {
+        private Trails4HealthContext _context = new Trails4HealthContext();
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly IEmailSender _emailSender;
@@ -68,12 +69,16 @@ namespace Trail4Healthtest.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Index(IndexViewModel model)
+        public async Task<IActionResult> Index(IndexViewModel model, int idTurista, string passagemtextoNome, string passagemtextoEmerg, int passagemtextoNif, string passagemtextoTel, bool passagemtextoAtivo,  [Bind("TuristaId,Contatoemergencia,Email,Nif,Nome,NumeroTelefone,EstadoTurista")] Turista turista)
         {
             if (!ModelState.IsValid)
             {
                 return View(model);
             }
+
+            turista = new Turista { TuristaId=idTurista, Nome=passagemtextoNome, Contatoemergencia=passagemtextoEmerg, Email = model.Email, Nif = passagemtextoNif, NumeroTelefone = model.PhoneNumber, EstadoTurista = passagemtextoAtivo  };
+            _context.Update(turista);
+            await _context.SaveChangesAsync();
 
             var user = await _userManager.GetUserAsync(User);
             if (user == null)
@@ -100,8 +105,9 @@ namespace Trail4Healthtest.Controllers
                     throw new ApplicationException($"Unexpected error occurred setting phone number for user with ID '{user.Id}'.");
                 }
             }
+            
 
-            StatusMessage = "Your profile has been updated";
+            StatusMessage = "O seu perfil foi atualizado com sucesso!";
             return RedirectToAction(nameof(Index));
         }
 
@@ -172,7 +178,7 @@ namespace Trail4Healthtest.Controllers
 
             await _signInManager.SignInAsync(user, isPersistent: false);
             _logger.LogInformation("User changed their password successfully.");
-            StatusMessage = "Your password has been changed.";
+            StatusMessage = "A password foi alterado com sucesso";
 
             return RedirectToAction(nameof(ChangePassword));
         }
@@ -220,7 +226,7 @@ namespace Trail4Healthtest.Controllers
             }
 
             await _signInManager.SignInAsync(user, isPersistent: false);
-            StatusMessage = "Your password has been set.";
+            StatusMessage = "A senho foi definida";
 
             return RedirectToAction(nameof(SetPassword));
         }
@@ -281,7 +287,7 @@ namespace Trail4Healthtest.Controllers
             // Clear the existing external cookie to ensure a clean login process
             await HttpContext.SignOutAsync(IdentityConstants.ExternalScheme);
 
-            StatusMessage = "The external login was added.";
+            StatusMessage = "O login externo foi adicionado.";
             return RedirectToAction(nameof(ExternalLogins));
         }
 
@@ -302,7 +308,7 @@ namespace Trail4Healthtest.Controllers
             }
 
             await _signInManager.SignInAsync(user, isPersistent: false);
-            StatusMessage = "The external login was removed.";
+            StatusMessage = "O login externo foi removido.";
             return RedirectToAction(nameof(ExternalLogins));
         }
 

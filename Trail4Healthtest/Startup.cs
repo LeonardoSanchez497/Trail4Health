@@ -39,7 +39,7 @@ namespace Trail4Healthtest
             services.AddTransient<IEmailSender, EmailSender>();
 
             services.AddMvc();
-
+            
             services.AddDbContext<Trails4HealthContext>();
             services.AddScoped<DbContext>(sp => sp.GetService<Trails4HealthContext>());
         }

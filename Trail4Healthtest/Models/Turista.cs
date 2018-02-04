@@ -14,7 +14,7 @@ namespace Trail4Healthtest.Models
 
         public int TuristaId { get; set; }
         //[Required(ErrorMessage = "Introduza um contacto em caso de emergencia, Esse número é invalido")]
-        //[RegularExpression(@"(2\d{8})|9[1236]\d{7}", ErrorMessage = "Só é aceitavel caracteres numéricos, minimo 9")]
+        //[RegularExpression(@"(2\d{9})|9[1236]\d{7}", ErrorMessage = "Só é aceitavel caracteres numéricos, minimo 9")]
         public string Contatoemergencia { get; set; }
         public string Email { get; set; }
         public int Nif { get; set; }
@@ -22,12 +22,10 @@ namespace Trail4Healthtest.Models
         //[RegularExpression(@"\w{3,150}", ErrorMessage = "Só é aceitavel caracteres alfabeticos ")]
         public string Nome { get; set; }
         //[Required(ErrorMessage = "Introduza um contacto, Esse número é invalido")]
-        //[RegularExpression(@"(2\d{8})|9[1236]\d{7}", ErrorMessage = "Só é aceitavel caracteres numéricos, minimo 9")]
+        //[DataType(DataType.PhoneNumber)]  
+        //[RegularExpression(@"(2\d{9})|9[1236]\d{7}", ErrorMessage = "Só é aceitavel caracteres numéricos, minimo 9")]
         public string NumeroTelefone { get; set; }
-        //[Required(ErrorMessage = "Introduza um nome para caracterizar a trilho")]
-        //[RegularExpression(@"\w{5,150}", ErrorMessage = "Só é aceitavel caracteres alfabeticos, minimo 5 ")]
         public bool EstadoTurista { get; set; }
-
         public ICollection<AgendaTuristaTrilho> AgendaTuristaTrilho { get; set; }
         public ICollection<Comentarios> Comentarios { get; set; }
     }

@@ -219,10 +219,8 @@ namespace Trail4Healthtest.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Register(RegisterViewModel model,[Bind("TuristaId,Contatoemergencia,Email,Nif,Nome,NumeroTelefone,EstadoTurista")] Turista turista,  string passagemdetexto, int passagemdetextoNIF, string passagemdetextoTelemovel, string passagemdetextoEmergencia, string returnUrl = null)
         {
-
-            
-            
-            //ViewData["ReturnUrl"] = "~/Turistas/Create";
+   
+            ViewData["ReturnUrl"] = returnUrl;
             if (ModelState.IsValid)
             {
                 //Adicionar Turista na Trail4HealthDB
@@ -230,7 +228,8 @@ namespace Trail4Healthtest.Controllers
                 _context.Add(turista);
                 await _context.SaveChangesAsync();
 
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                //Add 
+                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, PhoneNumber= passagemdetextoTelemovel};
                 var result = await _userManager.CreateAsync(user, model.Password);
 
                 if (result.Succeeded)
@@ -243,7 +242,7 @@ namespace Trail4Healthtest.Controllers
 
                     await _signInManager.SignInAsync(user, isPersistent: false);
                     _logger.LogInformation("User created a new account with password.");
-                   return RedirectToAction(nameof(HomeController), "Home");
+                   return RedirectToLocal(returnUrl);
                 }
                 AddErrors(result);
                 
