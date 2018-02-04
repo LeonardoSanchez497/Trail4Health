@@ -58,11 +58,32 @@ namespace Trail4Healthtest.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Login(LoginViewModel model, string returnUrl = null)
         {
+            bool ativo;
+            int id = 0;
+            var user = await _userManager.FindByNameAsync(model.Email);
+
+
             ViewData["ReturnUrl"] = returnUrl;
             if (ModelState.IsValid)
             {
+
                 // This doesn't count login failures towards account lockout
                 // To enable password failures to trigger account lockout, set lockoutOnFailure: true
+
+
+                var record = _context.Turista.Where(r => r.Email == model.Email);
+                foreach (var item in record)
+                {
+                    id = item.TuristaId;
+                    ativo = item.EstadoTurista;
+
+                    if (ativo == true)
+                    {
+                        return Redirect("/Home/Error");
+                    }
+
+                }
+
                 var result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, lockoutOnFailure: false);
                 if (result.Succeeded)
                 {
@@ -83,6 +104,7 @@ namespace Trail4Healthtest.Controllers
                     ModelState.AddModelError(string.Empty, "Invalid login attempt.");
                     return View(model);
                 }
+
             }
 
             // If we got this far, something failed, redisplay form
@@ -217,19 +239,19 @@ namespace Trail4Healthtest.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Register(RegisterViewModel model,[Bind("TuristaId,Contatoemergencia,Email,Nif,Nome,NumeroTelefone,EstadoTurista")] Turista turista,  string passagemdetexto, int passagemdetextoNIF, string passagemdetextoTelemovel, string passagemdetextoEmergencia, string returnUrl = null)
+        public async Task<IActionResult> Register(RegisterViewModel model, [Bind("TuristaId,Contatoemergencia,Email,Nif,Nome,NumeroTelefone,EstadoTurista")] Turista turista, string passagemdetexto, int passagemdetextoNIF, string passagemdetextoTelemovel, string passagemdetextoEmergencia, string returnUrl = null)
         {
-   
+
             ViewData["ReturnUrl"] = returnUrl;
             if (ModelState.IsValid)
             {
                 //Adicionar Turista na Trail4HealthDB
-                turista = new Turista { Nome = passagemdetexto, Nif = passagemdetextoNIF, Contatoemergencia = passagemdetextoEmergencia, NumeroTelefone = passagemdetextoTelemovel, Email = model.Email, EstadoTurista = true };
+                turista = new Turista { Nome = passagemdetexto, Nif = passagemdetextoNIF, Contatoemergencia = passagemdetextoEmergencia, NumeroTelefone = passagemdetextoTelemovel, Email = model.Email, EstadoTurista = false };
                 _context.Add(turista);
                 await _context.SaveChangesAsync();
 
                 //Add 
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, PhoneNumber= passagemdetextoTelemovel};
+                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, PhoneNumber = passagemdetextoTelemovel };
                 var result = await _userManager.CreateAsync(user, model.Password);
 
                 if (result.Succeeded)
@@ -242,10 +264,10 @@ namespace Trail4Healthtest.Controllers
 
                     await _signInManager.SignInAsync(user, isPersistent: false);
                     _logger.LogInformation("User created a new account with password.");
-                   return RedirectToLocal(returnUrl);
+                    return RedirectToLocal(returnUrl);
                 }
                 AddErrors(result);
-                
+
             }
 
             // If we got this far, something failed, redisplay form

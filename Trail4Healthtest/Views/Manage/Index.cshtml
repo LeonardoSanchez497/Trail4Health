@@ -11,10 +11,10 @@
     var context = new Trails4HealthContext();
     var nometurista = "";
     var numeroTl = "";
-    var cont= "";
+    var cont = "";
     var nif = 0;
     var idturista = 0;
-    bool ativo = true;
+    bool ativo = false;
 
     var record = context.Turista.Where(r => r.Email == userId);
 
@@ -28,8 +28,11 @@
         cont = item.Contatoemergencia;
         ativo = item.EstadoTurista;
     }
+
 }
 
+@if (this.User.IsInRole("Turista"))
+{
     <div class="row">
         <section class="page col-sm-12">
             <div class="row">
@@ -40,7 +43,7 @@
                         <div class="form-group">
                             <label>Nome</label>
                             <input class="form-control" name="passagemtextoNome" value="@nometurista" />
-                            <input style="display:none;" name="idTurista" value="@idturista"/>
+                            <input style="display:none;" name="idTurista" value="@idturista" />
                         </div>
                         <div class="form-group">
                             <label asp-for="Email"></label>
@@ -59,7 +62,7 @@
                         </div>
                         <div class="form-group">
                             <label>NIF</label>
-                            <input class="form-control" name ="passagemtextoNif" value="@nif" />
+                            <input class="form-control" name="passagemtextoNif" value="@nif" />
                         </div>
                         <div class="form-group">
                             <label>Numero de Telemóvel</label>
@@ -68,23 +71,68 @@
                         </div>
                         <div class="form-group">
                             <label>Contato de Emergência</label>
-                            <input class="form-control" name ="passagemtextoEmerg" value="@cont" />
+                            <input class="form-control" name="passagemtextoEmerg" value="@cont" />
                         </div>
-                        <div class="form-inline">
-                            <label>Desativar Conta?</label> &nbsp;
+                        @if (@ativo == true)
+                        {
+                            <div class="form-inline">
+                                <label>Desativar Conta?</label> &nbsp;
+                                <input checked="checked" class="checkbox" name="passagemtextoAtivo" type="checkbox" />
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="form-inline">
+                                <label>Desativar Conta?</label> &nbsp;
+                                <input id="ckd" class="checkbox" name="passagemtextoAtivo" type="checkbox" />
+                            </div>
+                        }
+                        <br>
+                        <button type="submit" class="btn btn-default">Atualizar Dados</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </div>
+}
 
-                            <input  class="checkbox" name="passagemtextoAtivo" value="@ativo" type="checkbox" />
-
+@if (this.User.IsInRole("Administrador"))
+{
+    <div class="row">
+        <section class="page col-sm-12">
+            <div class="row">
+                <div class="col-lg-12">
+                    @Html.Partial("_StatusMessage", Model.StatusMessage)
+                    <form method="post">
+                        <div asp-validation-summary="All" class="text-danger"></div>
+                        <div class="form-group">
+                            <label asp-for="Email"></label>
+                            @if (Model.IsEmailConfirmed)
+                            {
+                                <div class="input-group">
+                                    <label asp-for="Email" class="form-control" />
+                                    <span class="input-group-addon" aria-hidden="true"><span class="glyphicon glyphicon-ok text-success"></span></span>
+                                </div>
+                            }
+                            else
+                            {
+                                <input asp-for="Email" class="form-control" />
+                            }
+                            <span asp-validation-for="Email" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label>Numero de Telemóvel</label>
+                            <input asp-for="PhoneNumber" class="form-control" />
+                            <span asp-validation-for="PhoneNumber" class="text-danger"></span>
                         </div>
                         <br>
                         <button type="submit" class="btn btn-default">Atualizar Dados</button>
                     </form>
                 </div>
             </div>
-            </section>
-        </div>
+        </section>
     </div>
-
-            @section Scripts {
-                @await Html.PartialAsync("_ValidationScriptsPartial")
-            }
+}
+@section Scripts {
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+}

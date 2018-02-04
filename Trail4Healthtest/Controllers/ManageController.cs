@@ -69,14 +69,25 @@ namespace Trail4Healthtest.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Index(IndexViewModel model, int idTurista, string passagemtextoNome, string passagemtextoEmerg, int passagemtextoNif, string passagemtextoTel, bool passagemtextoAtivo,  [Bind("TuristaId,Contatoemergencia,Email,Nif,Nome,NumeroTelefone,EstadoTurista")] Turista turista)
+        public async Task<IActionResult> Index(IndexViewModel model, int idTurista, string passagemtextoNome, string passagemtextoEmerg, int passagemtextoNif, string passagemtextoTel, string passagemtextoAtivo, [Bind("TuristaId,Contatoemergencia,Email,Nif,Nome,NumeroTelefone,EstadoTurista")] Turista turista)
         {
+
             if (!ModelState.IsValid)
             {
                 return View(model);
             }
 
-            turista = new Turista { TuristaId=idTurista, Nome=passagemtextoNome, Contatoemergencia=passagemtextoEmerg, Email = model.Email, Nif = passagemtextoNif, NumeroTelefone = model.PhoneNumber, EstadoTurista = passagemtextoAtivo  };
+            bool ativos = false;
+            if (passagemtextoAtivo == "on")
+            {
+                ativos = true;
+            }
+            else if (passagemtextoAtivo == "off")
+            {
+                ativos = false;
+            }
+
+            turista = new Turista { TuristaId = idTurista, Nome = passagemtextoNome, Contatoemergencia = passagemtextoEmerg, Email = model.Email, Nif = passagemtextoNif, NumeroTelefone = model.PhoneNumber, EstadoTurista = ativos };
             _context.Update(turista);
             await _context.SaveChangesAsync();
 
@@ -105,9 +116,16 @@ namespace Trail4Healthtest.Controllers
                     throw new ApplicationException($"Unexpected error occurred setting phone number for user with ID '{user.Id}'.");
                 }
             }
-            
 
-            StatusMessage = "O seu perfil foi atualizado com sucesso!";
+            if (ativos == true)
+            {
+                await _signInManager.SignOutAsync();
+            }
+            else
+            {
+                StatusMessage = "O seu perfil foi atualizado com sucesso!";
+            }
+
             return RedirectToAction(nameof(Index));
         }
 

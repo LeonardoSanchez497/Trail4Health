@@ -20,34 +20,34 @@
     <div class="row">
         <section class="page col-sm-12">
             <div class="row">
-                    <table class="table table-condensed">
-                        <thead>
-                            <tr>
-                                <th>
-                                    @Html.DisplayNameFor(model => model.Nome)
-                                </th>
-                                <th>
-                                   Contato de Emergência
-                                </th>
-                                <th>
-                                   Email
-                                </th>
-                                <th>
-                                    NIF
-                                </th>
+                <table class="table table-condensed">
+                    <thead>
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Nome)
+                            </th>
+                            <th>
+                                Contato de Emergência
+                            </th>
+                            <th>
+                                Email
+                            </th>
+                            <th>
+                                NIF
+                            </th>
 
-                                <th>
-                                   Nº de Telefone
-                                </th>
-                                <th>
-                                    Estado da conta. Desativa?
-                                </th>
-                                <th></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach (var item in Model)
-                            {
+                            <th>
+                                Nº de Telefone
+                            </th>
+                            <th>
+                                Estado da conta. Desativa?
+                            </th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
                             <tr>
                                 <td>
                                     @Html.DisplayFor(modelItem => item.Nome)
@@ -77,10 +77,10 @@
                                     </button>
                                 </td>
                             </tr>
-                            }
-                        </tbody>
-                    </table>
-                </div>
-            </section>
-        </div>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </section>
     </div>
+</div>

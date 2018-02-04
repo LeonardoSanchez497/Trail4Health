@@ -5,7 +5,14 @@
 }
 
 <ul class="nav nav-pills nav-stacked">
-    <li class="@ManageNavPages.IndexNavClass(ViewContext)"><a asp-action="Index">Perfil do turista</a></li>
+    @if (this.User.IsInRole("Turista"))
+    {
+        <li class="@ManageNavPages.IndexNavClass(ViewContext)"><a asp-action="Index">Perfil do turista</a></li>
+    }
+    @if (this.User.IsInRole("Administrador"))
+    {
+        <li class="@ManageNavPages.IndexNavClass(ViewContext)"><a asp-action="Index">Perfil do Administrador</a></li>
+    }
     <li class="@ManageNavPages.ChangePasswordNavClass(ViewContext)"><a asp-action="ChangePassword">Mudar password</a></li>
     @if (hasExternalLogins)
     {

@@ -85,16 +85,15 @@ namespace Trail4Healthtest.Data
                 var trilho = new List<Trilho>
                 {
 
-                    new Trilho { Ativo=true, Coddesnivel=5,  Coddificuldade=4, Codepocaaconselhda=6, Distanciaapercorrer="5km", Duracaomedia="2horas", Locfim="Torre", Locinicio="Estancia", NewsletterAtiva=true, Nometrilho="Caminhada a torre" },
-                    new Trilho { Ativo=true, Coddesnivel=6,  Coddificuldade=5, Codepocaaconselhda=7, Distanciaapercorrer="10km", Duracaomedia="3horas", Locfim="Estancia", Locinicio="Serra", NewsletterAtiva=true, Nometrilho="Descida da montanha" },
-                    new Trilho { Ativo=true, Coddesnivel=7,  Coddificuldade=5, Codepocaaconselhda=9, Distanciaapercorrer="12km", Duracaomedia="5horas", Locfim="Poço do inferno", Locinicio="Estancia", NewsletterAtiva=true, Nometrilho="Descida ao Poço do inferno" },
-                    
+                    new Trilho { Ativo=true, Coddesnivel=1,  Coddificuldade=1, Codepocaaconselhda=1, Distanciaapercorrer="5km", Duracaomedia="2horas", Locfim="Torre", Locinicio="Estancia", NewsletterAtiva=true, Nometrilho="Caminhada a torre" },
+                    new Trilho { Ativo=true, Coddesnivel=2,  Coddificuldade=2, Codepocaaconselhda=2, Distanciaapercorrer="10km", Duracaomedia="3horas", Locfim="Estancia", Locinicio="Serra", NewsletterAtiva=true, Nometrilho="Descida da montanha" },
+                    new Trilho { Ativo=true, Coddesnivel=3,  Coddificuldade=3, Codepocaaconselhda=3, Distanciaapercorrer="12km", Duracaomedia="5horas", Locfim="Poço do inferno", Locinicio="Estancia", NewsletterAtiva=true, Nometrilho="Descida ao Poço do inferno" },
+
                 };
 
                 context.AddRange(trilho);
                 await context.SaveChangesAsync();
             }
-
 
             if (!context.Etapa.Any())
             {
@@ -119,15 +118,31 @@ namespace Trail4Healthtest.Data
                 var etapatrilho = new List<EtapaTrilho>
                 {
 
-                    new EtapaTrilho{ Ativo =true, Etapaid=2, OrdemEtapa="1", TrilhoId = 5},
-                    new EtapaTrilho{ Ativo =true, Etapaid=3, OrdemEtapa="2", TrilhoId = 5},
-                    new EtapaTrilho{ Ativo =true, Etapaid=4, OrdemEtapa="1", TrilhoId = 6},
-                    new EtapaTrilho{ Ativo =true, Etapaid=5, OrdemEtapa="2", TrilhoId = 6},
+                    new EtapaTrilho{ Ativo =true, Etapaid=1, OrdemEtapa="1", TrilhoId = 1},
+                    new EtapaTrilho{ Ativo =true, Etapaid=2, OrdemEtapa="2", TrilhoId = 2},
+                    new EtapaTrilho{ Ativo =true, Etapaid=3, OrdemEtapa="1", TrilhoId = 1},
+                    new EtapaTrilho{ Ativo =true, Etapaid=4, OrdemEtapa="2", TrilhoId = 3},
                 };
 
                 context.AddRange(etapatrilho);
                 await context.SaveChangesAsync();
             }
+
+            if (!context.Turista.Any())
+            {
+
+                var turista = new List<Turista>
+                {
+
+                    new Turista{ Nome="Maria dos Anjos Santos", Email="mariadosanjos@gmail.com", Contatoemergencia="965468963", Nif=228963478, NumeroTelefone="965468963",EstadoTurista = false },
+
+                };
+
+                context.AddRange(turista);
+                await context.SaveChangesAsync();
+            }
+
         }
+
     }
 }
