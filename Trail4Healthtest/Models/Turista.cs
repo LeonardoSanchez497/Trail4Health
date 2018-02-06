@@ -19,7 +19,7 @@ namespace Trail4Healthtest.Models
         public string Email { get; set; }
         public int Nif { get; set; }
         //[Required(ErrorMessage = "Introduza seu nome ")]
-        //[RegularExpression(@"\w{3,150}", ErrorMessage = "Só é aceitavel caracteres alfabeticos ")]
+        //[RegularExpression(@"([A-Za-záàâãéèêíóôõúçÁÀÂÃÉÈÍÓÔÕÚÇ\s]+)", ErrorMessage = "Só é aceitavel caracteres alfabeticos ")]
         public string Nome { get; set; }
         //[Required(ErrorMessage = "Introduza um contacto, Esse número é invalido")]
         //[DataType(DataType.PhoneNumber)]  
